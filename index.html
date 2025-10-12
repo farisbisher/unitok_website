@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,36 +12,37 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #000000 0%, #201B40 50%, #000000 100%);
             min-height: 100vh;
             background-attachment: fixed;
+            overflow-x: hidden;
         }
-
+        
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        
         header {
             background: transparent;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             overflow: visible;
             position: relative;
             z-index: 5;
         }
-
+        
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
+        
         .logo {
             height: 230px;
             display: flex;
@@ -53,117 +53,216 @@
             z-index: 10;
             margin: -50px 0;
         }
-
+        
         .logo img {
             height: 100%;
             width: auto;
         }
-
+        
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-
+        
         .nav-links a {
             text-decoration: none;
             color: white;
             font-weight: 500;
             transition: color 0.3s ease;
         }
-
+        
         .nav-links a:hover {
             color: #ccc;
         }
-
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Modified scrolling behavior */
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 5rem 0 8rem;
             color: white;
+            background: transparent;
+            transform: translateY(0);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         }
-
+        
+        .hero.scrolled {
+            transform: translateY(-100px);
+            opacity: 0.3;
+        }
+        
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #E5204E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
         }
-
+        
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
-
+        
         .cta-button {
             display: inline-block;
-            background: #E5204E;
+            background: linear-gradient(135deg, #667eea 0%, #E5204E 100%);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
         }
-
+        
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
         .features {
-            background: transparent;
-            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8rem 0;
             color: white;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .features .container {
+            position: relative;
+            z-index: 2;
+        }
+        
         .features-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             align-items: center;
         }
-
+        
         .features-left {
             text-align: center;
         }
-
+        
         .features-video {
             width: 100%;
             max-width: 500px;
             height: auto;
             margin-bottom: 0;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
-
+        
+        .features-video:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.2);
+        }
+        
         .features-description {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             line-height: 2;
             color: rgba(255, 255, 255, 0.9);
-            text-align: justify;
+            text-align: center;
             margin: 0;
             padding: 0;
         }
-
+        
         .features-right {
             text-align: center;
         }
-
+        
         .download-title {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 2rem;
             color: white;
         }
-
+        
         .download-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-
+        
         .download-button {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -178,82 +277,266 @@
             align-items: center;
             gap: 1rem;
         }
-
+        
         .download-button:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.3);
         }
-
+        
         .download-icon {
             width: 40px;
             height: 40px;
         }
-
+        
         .download-label {
             font-size: 1rem;
             font-weight: 600;
             text-align: center;
         }
-
+        
         .download-steps {
             text-align: left;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
         }
-
+        
         .download-steps h4 {
             color: white;
             margin-bottom: 0.5rem;
             font-size: 1rem;
         }
-
+        
         .download-steps ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
+        
         .download-steps li {
             margin-bottom: 0.3rem;
         }
-
+        
         .download-steps li:before {
             content: "- ";
             color: #8B5CF6;
             font-weight: bold;
         }
-
+        
         @media (max-width: 768px) {
             .features-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
+            
             .download-buttons {
                 grid-template-columns: 1fr;
             }
-
+            
             .features-video {
                 width: 100%;
                 max-width: 400px;
             }
         }
+        
+        .marquees-section {
+            background: transparent;
+            padding: 4rem 2rem;
+            color: white;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-top: 6rem;
+            margin-bottom: 6rem;
+        }
+        
+        .partners-main-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .marquee-container {
+            margin-bottom: 0.8rem;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        
+        .marquee-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            padding: 2rem 0;
+            margin: 0;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: scroll-left 30s linear infinite;
+            white-space: nowrap;
+        }
+        
+        .marquee-content.single-item {
+            animation: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .marquee-item.section-label {
+            margin: 0 4rem;
+        }
+        
+        .marquee-item.section-label span {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .marquee-item {
+            display: inline-block;
+            margin: 0 3rem;
+            vertical-align: middle;
+        }
+        
+        .marquee-item img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .marquee-item img.software-logo {
+            height: 51px;
+        }
+        
+        .marquee-item img.google-logo {
+            height: 60px !important;
+            width: auto !important;
+            max-width: 60px !important;
+            object-fit: contain !important;
+        }
+        
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* Different scroll speeds for variety */
+        .marquee-universities .marquee-content {
+            animation-duration: 25s;
+        }
+        
+        .marquee-clubs .marquee-content {
+            animation-duration: 20s;
+        }
+        
+        .marquee-advertisers .marquee-content {
+            animation-duration: 35s;
+        }
+        
+        
+        @media (max-width: 768px) {
+            .marquees-section {
+                padding: 2rem 1rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .partners-main-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .marquee-title {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .marquee-container {
+                margin-bottom: 1rem;
+            }
+            
+            .marquee-item {
+                margin: 0 2rem;
+            }
+            
+            .marquee-item img {
+                height: 60px;
+            }
+            
+            .marquee {
+                padding: 1.5rem 0;
+            }
+        }
 
         .team {
-            background: transparent;
-            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8rem 0;
             color: white;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .team::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .team .container {
+            position: relative;
+            z-index: 2;
+        }
+        
         .team h2 {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 3rem;
+            margin-bottom: 4rem;
             color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            animation: fadeInUp 1s ease-out;
         }
-
+        
         .team-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -263,7 +546,7 @@
             justify-items: center;
             align-items: start;
         }
-
+        
         .team-member {
             text-align: center;
             padding: 1rem;
@@ -273,24 +556,49 @@
             width: 100%;
             max-width: 200px;
         }
-
+        
         .profile-circle {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border: 2px solid rgba(255, 255, 255, 0.2);
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+            animation: fadeInUp 1s ease-out;
         }
-
-
+        
+        .profile-circle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #f093fb, #764ba2, #e45072, #667eea);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .profile-circle:hover::before {
+            opacity: 1;
+        }
+        
+        .profile-circle:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+        
+        
         .profile-circle img {
             width: 120px;
             height: 120px;
@@ -300,7 +608,7 @@
             top: 0;
             left: 0;
         }
-
+        
         /* Individual profile picture styles */
         .profile-faris {
             width: 120px !important;
@@ -312,7 +620,7 @@
             left: 50% !important;
             transform: translate(-48%, -50%) !important;
         }
-
+        
         .profile-mohammed-karrar {
             width: 100px !important;
             height: 100px !important;
@@ -323,7 +631,7 @@
             left: 50% !important;
             transform: translate(-50%, -50%) !important;
         }
-
+        
         .profile-abdullah {
             width: 150px !important;
             height: 150px !important;
@@ -334,7 +642,7 @@
             left: 50% !important;
             transform: translate(-51%, -47%) !important;
         }
-
+        
         .profile-mohammed-abu {
             width: 150px !important;
             height: 150px !important;
@@ -345,7 +653,7 @@
             left: 50% !important;
             transform: translate(-51%, -47%) !important;
         }
-
+        
         .profile-lojaen {
             width: 110px !important;
             height: 110px !important;
@@ -356,7 +664,7 @@
             left: 50% !important;
             transform: translate(-48%, -50%) !important;
         }
-
+        
         .profile-tasneem {
             width: 120px !important;
             height: 120px !important;
@@ -367,7 +675,7 @@
             left: 50% !important;
             transform: translate(-45%, -57%) !important;
         }
-
+        
         .profile-arwa {
             width: 110px !important;
             height: 110px !important;
@@ -378,7 +686,7 @@
             left: 50% !important;
             transform: translate(-48%, -50%) !important;
         }
-
+        
         .profile-rana {
             width: 105px !important;
             height: 105px !important;
@@ -389,12 +697,12 @@
             left: 50% !important;
             transform: translate(-48%, -50%) !important;
         }
-
+        
         .profile-circle:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
+        
         .member-name {
             font-size: 1.1rem;
             font-weight: 600;
@@ -405,54 +713,54 @@
             justify-content: center;
             gap: 0.5rem;
         }
-
+        
         .member-title {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.4;
         }
-
+        
         .linkedin-link {
             display: inline-block;
             text-decoration: none;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
-
+        
         .linkedin-link:hover {
             transform: scale(1.1);
             opacity: 0.8;
         }
-
+        
         .linkedin-icon {
             width: 20px;
             height: 20px;
             fill: white;
             transition: fill 0.3s ease;
         }
-
+        
         .linkedin-link:hover .linkedin-icon {
             fill: #A78BFA;
         }
-
+        
         @media (max-width: 768px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
-
+            
             .profile-circle {
                 width: 100px;
                 height: 100px;
                 font-size: 1.5rem;
             }
         }
-
+        
         footer {
             background: transparent;
             color: white;
-            padding: 2rem 0;
+            padding: 4rem 0;
         }
-
+        
         .footer-content {
             display: flex;
             justify-content: space-between;
@@ -460,33 +768,33 @@
             flex-wrap: wrap;
             gap: 2rem;
         }
-
+        
         .footer-logo {
             height: 100px;
         }
-
+        
         .footer-logo img {
             height: 100%;
             width: auto;
         }
-
+        
         .footer-contact {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
+        
         .footer-contact h3 {
             margin: 0;
             font-size: 1.1rem;
             color: white;
         }
-
+        
         .footer-social {
             display: flex;
             gap: 1rem;
         }
-
+        
         .footer-social a {
             display: flex;
             align-items: center;
@@ -498,52 +806,51 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-
+        
         .footer-social a:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
-
+        
         .footer-social svg {
             width: 20px;
             height: 20px;
             fill: white;
         }
-
+        
         .footer-copyright {
             text-align: right;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.8);
         }
-
+        
         @media (max-width: 768px) {
             .footer-content {
                 flex-direction: column;
                 text-align: center;
                 gap: 1.5rem;
             }
-
+            
             .footer-copyright {
                 text-align: center;
             }
         }
-
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
-
+            
             .hero p {
                 font-size: 1.1rem;
             }
         }
     </style>
 </head>
-
 <body>
     <header>
         <nav class="container">
@@ -572,30 +879,23 @@
                             Your browser does not support the video tag.
                         </video>
                         <p class="features-description">
-                            UniTok is the Central App for Students, built to close the gap between what universities
-                            provide and what the market needs. It brings all your university opportunities, events,
-                            competitions, and internships into one place, in a Gen Z–friendly style that makes growth
-                            fun and rewarding. 🚀
+                            UniTok is the Central App for Students, built to close the gap between what universities provide and what the market needs. It brings all your university opportunities, events, competitions, and internships into one place, in a Gen Z–friendly style that makes growth fun and rewarding. 🚀
                         </p>
                     </div>
                     <div class="features-right">
                         <h2 class="download-title">Download UniTok Now</h2>
                         <div class="download-buttons">
-                            <a href="https://drive.google.com/file/d/11Xgm7TVX_mQeXd5dB1imcIQ3YWfAxKUU/view?usp=sharing"
-                                target="_blank" class="download-button">
+                            <a href="https://drive.google.com/file/d/11Xgm7TVX_mQeXd5dB1imcIQ3YWfAxKUU/view?usp=sharing" target="_blank" class="download-button">
                                 <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
                                 </svg>
                                 <span class="download-label">Download for Android</span>
                             </a>
-                            <a href="https://testflight.apple.com/join/wFQN5qdR" target="_blank"
-                                class="download-button">
+                            <a href="https://apps.apple.com/sa/app/unitok-app/id6745688652" target="_blank" class="download-button">
                                 <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                                 </svg>
-                                <span class="download-label">Download for iOS (TestFlight)</span>
+                                <span class="download-label">Download for iOS</span>
                             </a>
                         </div>
                         <div class="download-steps">
@@ -604,11 +904,10 @@
                                 <li>Download the APK through the link</li>
                                 <li>Install the APK on your device</li>
                                 <li>Register your student or faculty account through Sign Up</li>
-                            </ul>
+                            </ul><br>
                             <h4>iOS:</h4>
                             <ul>
-                                <li>Download TestFlight</li>
-                                <li>Install UniTok through TestFlight</li>
+                                <li>Install UniTok through the link</li>
                                 <li>Register your student or faculty account through Sign Up</li>
                             </ul>
                         </div>
@@ -617,20 +916,95 @@
             </div>
         </section>
 
+        <section id="partners" class="marquees-section">
+            <h2 class="partners-main-title">Our Partners</h2>
+            <div class="marquee-container">
+                <h3 class="marquee-title">Universities</h3>
+                    <div class="marquee marquee-universities">
+                        <div class="marquee-content single-item">
+                            <div class="marquee-item">
+                                <img src="/assets/Universities/UPM.png" alt="University Logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-container">
+                    <h3 class="marquee-title">Clubs</h3>
+                    <div class="marquee marquee-clubs">
+                        <div class="marquee-content">
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Software.svg" alt="Software Club Logo" class="software-logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Cyber.png" alt="Cyber Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Electrical.png" alt="Electrical Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Google.png" alt="Google Club Logo" class="google-logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Math.png" alt="Math Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Ai.png" alt="AI Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/ENTcenter.png" alt="AI Club Logo">
+                            </div>
+                            <!-- Duplicate for seamless loop -->
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Software.svg" alt="Software Club Logo" class="software-logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Cyber.png" alt="Cyber Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Electrical.png" alt="Electrical Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Google.png" alt="Google Club Logo" class="google-logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Math.png" alt="Math Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/Ai.png" alt="AI Club Logo">
+                            </div>
+                            <div class="marquee-item">
+                                <img src="/assets/clubs/ENTcenter.png" alt="AI Club Logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-container">
+                    <h3 class="marquee-title">Advertisers</h3>
+                    <div class="marquee marquee-advertisers">
+                        <div class="marquee-content single-item">
+                            <div class="marquee-item">
+                                <img src="/assets/Advertisers/BalsamPharmacy.png" alt="Balsam Pharmacy Logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
         <section id="team" class="team">
             <div class="container">
                 <h2>Meet Our Team</h2>
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/FarisYacte.png" alt="Faris Yacte" class="profile-faris">
+                            <img src="/assets/team/FarisYacte.png" alt="Faris Yacte" class="profile-faris">
                         </div>
                         <div class="member-name">
                             Faris Yacte
                             <a href="https://www.linkedin.com/in/farisbisher/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -640,14 +1014,13 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/MohammedKarrar.png" alt="Mohammed Karrar" class="profile-mohammed-karrar">
+                            <img src="/assets/team/MohammedKarrar.png" alt="Mohammed Karrar" class="profile-mohammed-karrar">
                         </div>
                         <div class="member-name">
                             Mohammed Karrar
                             <a href="https://www.linkedin.com/in/mohamedkarar/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -656,14 +1029,13 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/AbdullahAlzubi.png" alt="Abdullah Alzubi" class="profile-abdullah">
+                            <img src="/assets/team/AbdullahAlzubi.png" alt="Abdullah Alzubi" class="profile-abdullah">
                         </div>
                         <div class="member-name">
                             Abdullah Alzubi
                             <a href="https://www.linkedin.com/in/auoz23/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -672,16 +1044,13 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/MohammedAbu-Khurayiba.png" alt="Mohammed Abu-Khurayiba"
-                                class="profile-mohammed-abu">
+                            <img src="/assets/team/MohammedAbu-Khurayiba.png" alt="Mohammed Abu-Khurayiba" class="profile-mohammed-abu">
                         </div>
                         <div class="member-name">
-                            Mohammed Abu-khraybeh
-                            <a href="https://www.linkedin.com/in/mohammedabukhraybeh/" target="_blank"
-                                class="linkedin-link">
+                            Mohammed Abu-Khuraybeh
+                            <a href="https://www.linkedin.com/in/mohammedabukhraybeh/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -689,15 +1058,13 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/LojaenAyash.png" alt="Lojaen Ayash" class="profile-lojaen">
+                            <img src="/assets/team/LojaenAyash.png" alt="Lojaen Ayash" class="profile-lojaen">
                         </div>
                         <div class="member-name">
                             Lojaen Ayash
-                            <a href="https://www.linkedin.com/in/lojaen-ayash-a194972b3/" target="_blank"
-                                class="linkedin-link">
+                            <a href="https://www.linkedin.com/in/lojaen-ayash-a194972b3/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -706,15 +1073,13 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/TasneemAlhattami.png" alt="Tasneem Alhattami" class="profile-tasneem">
+                            <img src="/assets/team/TasneemAlhattami.png" alt="Tasneem Alhattami" class="profile-tasneem">
                         </div>
                         <div class="member-name">
                             Tasneem Alhattami
-                            <a href="https://www.linkedin.com/in/tasneem-alhattami-890023173/" target="_blank"
-                                class="linkedin-link">
+                            <a href="https://www.linkedin.com/in/tasneem-alhattami-890023173/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -724,15 +1089,13 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/ArwaGhilan.png" alt="Arwa Ghilan" class="profile-arwa">
+                            <img src="/assets/team/ArwaGhilan.png" alt="Arwa Ghilan" class="profile-arwa">
                         </div>
                         <div class="member-name">
                             Arwa Ghilan
-                            <a href="https://www.linkedin.com/in/arwa-tawfiq-ghilan-b03b0422a/" target="_blank"
-                                class="linkedin-link">
+                            <a href="https://www.linkedin.com/in/arwa-tawfiq-ghilan-b03b0422a/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -742,15 +1105,13 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/RanaEhab.png" alt="Rana Ehab" class="profile-rana">
+                            <img src="/assets/team/RanaEhab.png" alt="Rana Ehab" class="profile-rana">
                         </div>
                         <div class="member-name">
                             Rana Ehab
-                            <a href="https://www.linkedin.com/in/rana-ehab-b51204311/" target="_blank"
-                                class="linkedin-link">
+                            <a href="https://www.linkedin.com/in/rana-ehab-b51204311/" target="_blank" class="linkedin-link">
                                 <svg class="linkedin-icon" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
                             </a>
                         </div>
@@ -771,16 +1132,14 @@
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
                     <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/unitok/" _blank" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/unitok/"_blank" title="LinkedIn">
                             <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </a>
                         <a href="https://t.me/+vffvh0RwZDljOTBk" target="_blank" title="Telegram">
                             <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                             </svg>
                         </a>
                     </div>
@@ -791,6 +1150,53 @@
             </div>
         </div>
     </footer>
-</body>
 
+    <script>
+        // Modified scrolling behavior for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            const hero = document.querySelector('.hero');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                
+                if (scrolled > 100) {
+                    hero.classList.add('scrolled');
+                } else {
+                    hero.classList.remove('scrolled');
+                }
+            });
+
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            const animatedElements = document.querySelectorAll('.team-member, .marquee-container, .features-content');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+
+            // Add staggered animation delays to team members
+            const teamMembers = document.querySelectorAll('.team-member');
+            teamMembers.forEach((member, index) => {
+                member.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
 </html>
+
