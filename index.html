@@ -426,7 +426,6 @@
         .marquee-item img {
             height: 80px;
             width: auto;
-            filter: brightness(0) invert(1);
             opacity: 1;
             transition: opacity 0.3s ease;
         }
@@ -442,6 +441,84 @@
             object-fit: contain !important;
         }
         
+        /* Universities Grid Layout */
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 2rem 2rem;
+            justify-items: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .university-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .university-item:hover {
+            transform: translateY(-5px);
+            opacity: 0.9;
+        }
+        
+        .university-item img {
+            height: 80px;
+            width: auto;
+            max-width: 150px;
+            opacity: 1;
+            object-fit: contain;
+        }
+        
+        /* Clubs Grid Layout */
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 2rem 2rem;
+            justify-items: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .club-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .club-item:hover {
+            transform: translateY(-5px);
+            opacity: 0.9;
+        }
+        
+        .club-item img {
+            height: 80px;
+            width: auto;
+            max-width: 150px;
+        /*filter: brightness(0) invert(1);*/
+            opacity: 1;
+            object-fit: contain;
+        }
+        
+        .club-item img.software-logo {
+            height: 51px;
+        }
+        
+        .club-item img.google-logo {
+            height: 60px !important;
+            width: auto !important;
+            max-width: 60px !important;
+            object-fit: contain !important;
+        }
+        
         @keyframes scroll-left {
             0% {
                 transform: translateX(0%);
@@ -449,15 +526,6 @@
             100% {
                 transform: translateX(-50%);
             }
-        }
-        
-        /* Different scroll speeds for variety */
-        .marquee-universities .marquee-content {
-            animation-duration: 25s;
-        }
-        
-        .marquee-clubs .marquee-content {
-            animation-duration: 20s;
         }
         
         .marquee-advertisers .marquee-content {
@@ -484,6 +552,37 @@
             
             .marquee-container {
                 margin-bottom: 1rem;
+            }
+            
+            .universities-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1.5rem;
+                padding: 1.5rem 1.5rem;
+            }
+            
+            .university-item img {
+                height: 60px;
+                max-width: 120px;
+            }
+            
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1.5rem;
+                padding: 1.5rem 1.5rem;
+            }
+            
+            .club-item img {
+                height: 60px;
+                max-width: 120px;
+            }
+            
+            .club-item img.software-logo {
+                height: 40px;
+            }
+            
+            .club-item img.google-logo {
+                height: 50px !important;
+                max-width: 50px !important;
             }
             
             .marquee-item {
@@ -920,63 +1019,87 @@
             <h2 class="partners-main-title">Our Partners</h2>
             <div class="marquee-container">
                 <h3 class="marquee-title">Universities</h3>
-                    <div class="marquee marquee-universities">
-                        <div class="marquee-content single-item">
-                            <div class="marquee-item">
-                                <img src="/assets/Universities/UPM.png" alt="University Logo">
+                    <div class="universities-grid">
+                            <div class="university-item">
+                                <img src="/assets/Universities/UPM.png" alt="UPM Logo">
                             </div>
-                        </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/AOU.png" alt="AOU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/PSU.svg" alt="PSU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/uofm.png" alt="UOFM Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/TU.svg" alt="TU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/pnu.svg" alt="PNU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/almaarefa.png" alt="Almaarefa Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/KAU.webp" alt="KAU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/QU.webp" alt="QU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/SAU.png" alt="SAU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/yanbu.png" alt="Yanbu Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/kfupm.svg" alt="KFUPM Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/PMU.png" alt="PMU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/shaqra.jpg.webp" alt="Shaqra Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/KFU.png" alt="KFU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/imamu.png" alt="ImamU Logo">
+                            </div>
+                            <div class="university-item">
+                                <img src="/assets/Universities/KSU.svg.png" alt="KSU Logo">
+                            </div>
+                           
+                      
                     </div>
                 </div>
 
                 <div class="marquee-container">
                     <h3 class="marquee-title">Clubs</h3>
-                    <div class="marquee marquee-clubs">
-                        <div class="marquee-content">
-                            <div class="marquee-item">
+                    <div class="clubs-grid">
+                            <div class="club-item">
                                 <img src="/assets/clubs/Software.svg" alt="Software Club Logo" class="software-logo">
                             </div>
-                            <div class="marquee-item">
+                            <div class="club-item">
                                 <img src="/assets/clubs/Cyber.png" alt="Cyber Club Logo">
                             </div>
-                            <div class="marquee-item">
+                            <div class="club-item">
                                 <img src="/assets/clubs/Electrical.png" alt="Electrical Club Logo">
                             </div>
-                            <div class="marquee-item">
+                            <div class="club-item">
                                 <img src="/assets/clubs/Google.png" alt="Google Club Logo" class="google-logo">
                             </div>
-                            <div class="marquee-item">
+                            <div class="club-item">
                                 <img src="/assets/clubs/Math.png" alt="Math Club Logo">
                             </div>
-                            <div class="marquee-item">
+                            <div class="club-item">
                                 <img src="/assets/clubs/Ai.png" alt="AI Club Logo">
                             </div>
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/ENTcenter.png" alt="AI Club Logo">
+                            <div class="club-item">
+                                <img src="/assets/clubs/ENTcenter.png" alt="ENT Center Logo">
                             </div>
-                            <!-- Duplicate for seamless loop -->
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/Software.svg" alt="Software Club Logo" class="software-logo">
-                            </div>
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/Cyber.png" alt="Cyber Club Logo">
-                            </div>
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/Electrical.png" alt="Electrical Club Logo">
-                            </div>
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/Google.png" alt="Google Club Logo" class="google-logo">
-                            </div>
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/Math.png" alt="Math Club Logo">
-                            </div>
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/Ai.png" alt="AI Club Logo">
-                            </div>
-                            <div class="marquee-item">
-                                <img src="/assets/clubs/ENTcenter.png" alt="AI Club Logo">
-                            </div>
-                        </div>
                     </div>
                 </div>
 
