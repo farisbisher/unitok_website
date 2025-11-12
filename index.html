@@ -940,6 +940,23 @@
             color: rgba(255, 255, 255, 0.8);
         }
         
+        .footer-links {
+            text-align: right;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #ccc;
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
             .footer-content {
                 flex-direction: column;
@@ -948,6 +965,10 @@
             }
             
             .footer-copyright {
+                text-align: center;
+            }
+            
+            .footer-links {
                 text-align: center;
             }
         }
@@ -1292,6 +1313,9 @@
                 </div>
                 <div class="footer-copyright">
                     <p>&copy; 2025 Unitok. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="/pp.html">Privacy Policy</a>
+                    </div>
                 </div>
             </div>
         </div>
