@@ -342,7 +342,7 @@ app.get('/confirm/:token', async (req, res) => {
         console.log(`Support notification sent for ${requestData.email}`);
 
         // Show confirmation page
-        res.sendFile(path.join(__dirname, '..', 'confirmed.html'));
+        res.sendFile(path.join(__dirname, '..', 'request-deletion', 'confirmed.html'));
 
     } catch (error) {
         console.error('Error confirming deletion request:', error);
@@ -364,7 +364,7 @@ app.get('/confirm/:token', async (req, res) => {
  * Serve the account deletion request form
  */
 app.get('/request-deletion', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index1.html'));
+    res.sendFile(path.join(__dirname, '..', 'request-deletion', 'index.html'));
 });
 
 /**
