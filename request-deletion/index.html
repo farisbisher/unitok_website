@@ -1423,7 +1423,13 @@
           feedback: document.getElementById('feedback').value
         };
 
-        const response = await fetch('/request-deletion', {
+        // Determine API URL based on environment
+        const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+        const API_URL = isProduction
+          ? 'https://unitok-website.onrender.com' // Replace with your Render URL
+          : 'http://localhost:3000';
+
+        const response = await fetch(`${API_URL}/request-deletion`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -16,6 +16,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
 
 // Feature dependencies
 const { v4: uuidv4 } = require('uuid');
@@ -30,6 +31,15 @@ console.log('UniTok Web application starting...');
 // ============================================================================
 // MIDDLEWARE CONFIGURATION
 // ============================================================================
+
+// Enable CORS for all origins (you can restrict this to your Netlify domain)
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || '*', // Allow your Netlify domain
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true
+};
+app.use(cors(corsOptions));
 
 // Parse JSON request bodies
 app.use(express.json());
