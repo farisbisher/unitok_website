@@ -56,11 +56,15 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# dotenv environment variables file (contains sensitive SMTP credentials)
 .env
 .env.test
 .env.local
 .env.production
+
+# Account deletion data directory (contains user deletion requests)
+data/
+!data/.gitkeep
 
 # parcel-bundler cache
 .cache
@@ -75,7 +79,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+# public (commented out - we use public/ folder for our static HTML files)
 
 # Storybook build outputs
 .out
