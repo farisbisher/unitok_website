@@ -342,7 +342,7 @@ app.get('/confirm/:token', async (req, res) => {
         console.log(`Support notification sent for ${requestData.email}`);
 
         // Show confirmation page
-        res.sendFile(path.join(__dirname, '..', 'public', 'request-deletion', 'confirmed.html'));
+        res.sendFile(path.join(__dirname, '..', 'confirmed.html'));
 
     } catch (error) {
         console.error('Error confirming deletion request:', error);
@@ -364,7 +364,7 @@ app.get('/confirm/:token', async (req, res) => {
  * Serve the account deletion request form
  */
 app.get('/request-deletion', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'request-deletion', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'index1.html'));
 });
 
 /**
@@ -372,7 +372,7 @@ app.get('/request-deletion', (req, res) => {
  * Serve the privacy policy page
  */
 app.get('/pp.html', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'pp.html'));
+    res.sendFile(path.join(__dirname, '..', 'pp.html'));
 });
 
 /**
@@ -380,7 +380,7 @@ app.get('/pp.html', (req, res) => {
  * Serve the landing page
  */
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // ============================================================================
