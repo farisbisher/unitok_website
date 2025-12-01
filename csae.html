@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UniTok – Child Safety & CSAE Standards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #E5204E;
+      --primary-light: #ff4d78;
+      --accent-color: #E5204E;
+      --accent-light: #ff4d78;
+      --text-dark: #ffffff;
+      --text-light: #e0e0e0;
+      --text-muted: #aaaaaa;
+      --bg-main: #0a0914;
+      --bg-white: #1a1525;
+      --bg-card: #201B40;
+      --border-color: #3d3564;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 12px 40px rgba(229, 32, 78, 0.3);
+      --highlight-bg: rgba(229, 32, 78, 0.15);
+      --highlight-border: #E5204E;
+      --transition-speed: 0.3s;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background: linear-gradient(135deg, #000000 0%, #201B40 50%, #000000 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      letter-spacing: 0.2px;
+    }
+
+    /* Reading Progress Bar */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 9999;
+    }
+
+    .reading-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-light) 100%);
+      width: 0%;
+      transition: width 0.1s ease;
+      box-shadow: 0 0 10px var(--accent-color);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      border-radius: 12px;
+      box-shadow: var(--shadow-md), 0 0 30px rgba(229, 32, 78, 0.15);
+      padding: 48px;
+      animation: fadeIn 0.5s ease-in;
+      border: 1px solid var(--border-color);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header */
+    header {
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .updated {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .updated::before {
+      content: '📅';
+      font-size: 16px;
+    }
+
+    p.lead {
+      color: var(--text-light);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-top: 16px;
+      background: rgba(229, 32, 78, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    /* Section styling */
+    section {
+      margin: 32px 0;
+      padding: 24px 0;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 16px;
+      margin-top: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(229, 32, 78, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2::before {
+      content: '▸';
+      color: var(--accent-color);
+      font-size: 24px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin: 20px 0 12px 0;
+    }
+
+    p {
+      color: var(--text-light);
+      margin: 16px 0;
+      line-height: 1.8;
+    }
+
+    /* Lists */
+    ul {
+      margin: 16px 0 16px 20px;
+      list-style: none;
+    }
+
+    ul li {
+      color: var(--text-light);
+      margin: 12px 0;
+      padding-left: 28px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    ul li::before {
+      content: '●';
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
+      font-size: 18px;
+    }
+
+    /* Highlighted/Important sections */
+    .important-box {
+      background: linear-gradient(135deg, rgba(229, 32, 78, 0.1) 0%, rgba(32, 27, 64, 0.5) 100%);
+      border: 2px solid var(--accent-color);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    /* Links */
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: all var(--transition-speed);
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      color: var(--primary-light);
+      border-bottom: 1px solid var(--primary-light);
+    }
+
+    strong {
+      font-weight: 700;
+      color: var(--text-dark);
+      background: rgba(229, 32, 78, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-speed);
+      border: none;
+      font-size: 24px;
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-light);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .container {
+        padding: 24px;
+        border-radius: 8px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      p, ul li {
+        font-size: 15px;
+      }
+
+      .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="container">
+
+    <header>
+      <h1>UniTok – Child Safety & CSAE Standards</h1>
+      <p class="updated">Last updated: January 2025</p>
+    </header>
+
+    <p class="lead">
+    UnTok is committed to protecting children and preventing all forms of
+    <strong>Child Sexual Abuse and Exploitation (CSAE)</strong>. These standards
+    describe how we define CSAE, what is prohibited, how users can report concerns,
+    and how we handle reports in line with applicable laws and Google Play’s
+    Child Safety Standards.
+    </p>
+
+    <section>
+      <h2>1. Scope and Applicability</h2>
+      <p>
+        These standards apply to all users and all content and interactions on the UniTok app,
+        including text, images, video, audio, links, and any other user-generated content
+        or communication features (such as comments, messages, or profiles).
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Definition of CSAE</h2>
+      <p>
+        For the purposes of UniTok, <strong>Child Sexual Abuse and Exploitation (CSAE)</strong>
+        includes any content or behavior that sexually abuses, harms, or exploits a child
+        (a person under 18 years old). This includes, but is not limited to:
+      </p>
+      <ul>
+        <li>Any sexual content involving a minor (real, fictionalized, or perceived).</li>
+        <li>Grooming a minor for sexual purposes (building trust to later exploit or abuse).</li>
+        <li>Sextortion, blackmail, or coercion of a minor to obtain sexual content or favors.</li>
+        <li>Trafficking a minor for sexual activities or exploitation.</li>
+        <li>Requests for sexual images, videos, or sexualized information from a minor.</li>
+        <li>Sharing or attempting to share <strong>Child Sexual Abuse Material (CSAM)</strong>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Prohibited Content and Behavior</h2>
+      <p>
+        The following content and behavior are strictly prohibited on UniTok and may lead to
+        immediate account suspension or permanent removal:
+      </p>
+      <ul>
+        <li>Uploading, sharing, or linking to CSAM or any sexual content involving minors.</li>
+        <li>Sexualized comments, messages, or jokes directed at or involving minors.</li>
+        <li>Attempts to contact minors for sexual purposes, including grooming or flirting.</li>
+        <li>Any request that a minor share intimate images, videos, or personal details.</li>
+        <li>Any promotion, glorification, or trivialization of CSAE or CSAM.</li>
+        <li>Impersonating a minor to engage in sexual conversations or activities.</li>
+      </ul>
+      <p>
+        We reserve the right to remove any content and take action on any account that we
+        reasonably believe may put children at risk, even if it does not fit the examples above.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. In-App Reporting & User Feedback Mechanisms</h2>
+      <p>
+        UniTok provides an in-app mechanism for users to report content, accounts, or behavior
+        that may involve CSAE or otherwise violate our rules. Users can:
+      </p>
+      <ul>
+        <li>Use the in-app "Report" feature (e.g., on posts, profiles, or messages) to flag content.</li>
+        <li>Use in-app feedback or support forms to describe concerns in more detail.</li>
+      </ul>
+      <p>
+        Reports related to child safety are treated as high priority and are reviewed as quickly
+        as possible by our moderation team.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Handling of CSAM and CSAE Reports</h2>
+      <p>
+        When UniTok becomes aware of potential CSAM or CSAE activity on the platform, we:
+      </p>
+      <ul>
+        <li><strong>Act swiftly to remove access</strong> to the reported content where appropriate.</li>
+        <li><strong>Restrict or disable accounts</strong> that may be involved in CSAE.</li>
+        <li>
+          <strong>Preserve relevant data</strong>, subject to our privacy policy and legal obligations,
+          to support any required investigation.
+        </li>
+        <li>
+          <strong>Report incidents to appropriate authorities or hotlines</strong>, where required
+          or appropriate under applicable laws. This may include national child protection
+          organizations or law enforcement agencies.
+        </li>
+      </ul>
+      <p>
+        We do not tolerate any attempts to share or trade CSAM on UniTok. Such activity will
+        result in immediate account termination and may be reported to law enforcement.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Compliance with Child Safety Laws</h2>
+      <p>
+        UniTok is designed and operated with the goal of complying with applicable child safety
+        and data protection laws in the jurisdictions where the app is available. This includes,
+        where applicable:
+      </p>
+      <ul>
+        <li>Laws and regulations related to the protection of children online.</li>
+        <li>Obligations to report suspected CSAE to competent authorities.</li>
+        <li>Data protection and privacy requirements governing how we collect, store, and share data.</li>
+      </ul>
+      <p>
+        We review and update our processes as legal requirements evolve and as platform
+        standards (such as Google Play's Child Safety Standards) are updated.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Age Restrictions and Use of UniTok</h2>
+      <p>
+        UniTok is not intended for children under the minimum age allowed by local law
+        in the user's country. Where applicable:
+      </p>
+      <ul>
+        <li>Users must meet the minimum age requirement to create an account.</li>
+        <li>
+          If we learn that an account belongs to someone below the allowed age, we may
+          suspend or remove the account and take steps to protect the child.
+        </li>
+      </ul>
+      <p>
+        Parents and guardians are encouraged to monitor their children's online activity and
+        to contact us if they believe a child is using UniTok inappropriately or is at risk.
+      </p>
+    </section>
+
+    <section>
+      <h2>8. Education and Prevention</h2>
+      <p>
+        We support efforts to raise awareness about online safety for children and
+        encourage users to:
+      </p>
+      <ul>
+        <li>Never share passwords, verification codes, or sensitive images.</li>
+        <li>Be cautious when sharing personal information with people they do not know offline.</li>
+        <li>Report any suspicious or harmful behavior they encounter on UniTok.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Child Safety Point of Contact</h2>
+      <p>
+        If you have concerns about child safety, suspect CSAE, or need more information
+        about these standards, you can contact our dedicated child safety point of contact:
+      </p>
+      <div class="important-box">
+        <p>
+          <strong>Child Safety Contact – UniTok</strong><br />
+          Email: <a href="mailto:otp@unitokapp.com">otp@unitokapp.com</a>
+        </p>
+        <p>
+          Please include as much detail as possible (screenshots, usernames, timestamps)
+          so that we can investigate effectively. Do not send illegal images or content;
+          instead, describe the issue and where it occurred in the app.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>10. Changes to These Standards</h2>
+      <p>
+        We may update these Child Safety & CSAE Standards from time to time to reflect
+        changes in laws, regulations, or platform requirements. Any changes will be posted
+        on this page with an updated "Last updated" date.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    // Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
+</body>
+</html>
