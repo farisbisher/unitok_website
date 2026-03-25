@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unitok</title>
-    <link rel="icon" type="image/png" href="/assets/logo.png">
-    <link rel="shortcut icon" type="image/png" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/longlogo.png">
+    <link rel="shortcut icon" type="image/png" href="/assets/longlogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -886,7 +889,7 @@
         }
         
         .footer-logo {
-            height: 100px;
+            height: 32px;
         }
         
         .footer-logo img {
@@ -986,189 +989,533 @@
                 font-size: 1.1rem;
             }
         }
+    /* ============================
+       UniTok New Landing (UT)
+       ============================ */
+    .ut-wrap { background-color: #121219; min-height: 100vh; color: #ffffff; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; overflow-x: hidden; }
+    .ut-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Layout + colors */
+    :root {
+        --dark: #121219;
+        --card: #14141B;
+        --stroke: #2A2A32;
+        --sub: #707599;
+        --pink: #E91C57;
+        --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background-color: var(--dark);
+        color: var(--white);
+        overflow-x: hidden;
+        line-height: 1.6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* NAV */
+    .ut-header { display: flex; justify-content: center; padding: 8px 0 0; position: relative; z-index: 10; }
+    .ut-logo img { height: 120px; width: auto; }
+
+    /* HERO */
+    .ut-hero {
+        text-align: center; padding: 0 24px 100px;
+        position: relative; overflow: hidden; min-height: 92vh;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .ut-hero-canvas {
+        position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+    }
+    .ut-hero-rings {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 700px; height: 700px; pointer-events: none; z-index: 0;
+    }
+    .ut-ring {
+        position: absolute; border-radius: 50%; border: 1px solid rgba(233,28,87,0.15);
+        top: 50%; left: 50%; transform: translate(-50%, -50%);
+        animation: utPulseRing 4s ease-in-out infinite;
+    }
+    .ut-ring:nth-child(1) { width: 260px; height: 260px; animation-delay: 0s; border-color: rgba(233,28,87,0.25); }
+    .ut-ring:nth-child(2) { width: 420px; height: 420px; animation-delay: 0.8s; }
+    .ut-ring:nth-child(3) { width: 580px; height: 580px; animation-delay: 1.6s; }
+    .ut-ring:nth-child(4) { width: 700px; height: 700px; animation-delay: 2.4s; border-color: rgba(233,28,87,0.05); }
+    .ut-hero-glow {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
+        width: 700px; height: 500px; border-radius: 50%;
+        background: radial-gradient(ellipse, rgba(233,28,87,0.18) 0%, rgba(233,28,87,0.05) 40%, transparent 70%);
+        pointer-events: none; z-index: 0;
+        animation: utGlowPulse 3s ease-in-out infinite;
+    }
+    .ut-hero .ut-container { position: relative; z-index: 1; }
+    .ut-hero-badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: rgba(233,28,87,0.1); border: 1px solid rgba(233,28,87,0.3);
+        border-radius: 100px; padding: 6px 16px; font-size: 0.78rem; font-weight: 600;
+        color: var(--pink); margin-bottom: 1.5rem; letter-spacing: 0.5px;
+        animation: utFadeUp 0.6s ease-out both;
+    }
+    .ut-hero-badge-dot { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; animation: utBlink 1.4s ease-in-out infinite; }
+    .ut-hero h1 {
+        font-size: clamp(2.6rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -0.04em;
+        line-height: 1.05; margin-bottom: 1.4rem;
+        animation: utFadeUp 0.7s ease-out 0.1s both;
+        white-space: nowrap;
+    }
+    .ut-hero h1 .ut-line2 { display: inline-block; color: var(--pink); position: relative; }
+    .ut-hero h1 .ut-line2::after {
+        content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+        width: 60%; height: 2px;
+        background: linear-gradient(90deg, transparent, var(--pink), transparent);
+        animation: utLineGrow 1s ease-out 0.8s both;
+    }
+    .ut-hero p {
+        font-size: clamp(1rem, 2vw, 1.2rem); color: var(--sub);
+        max-width: 500px; margin: 0 auto 2.8rem; line-height: 1.7;
+        animation: utFadeUp 0.7s ease-out 0.2s both;
+    }
+    .ut-hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: utFadeUp 0.7s ease-out 0.3s both; }
+    .ut-hero-scroll {
+        position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+        display: flex; flex-direction: column; align-items: center; gap: 6px;
+        color: var(--sub); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+        z-index: 1; animation: utFadeUp 1s ease-out 1s both;
+    }
+    .ut-scroll-line {
+        width: 1px; height: 40px;
+        background: linear-gradient(to bottom, var(--pink), transparent);
+        animation: utScrollLine 1.5s ease-in-out infinite;
+    }
+
+    .ut-btn-primary {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--pink); color: #fff; font-weight: 600; font-size: 0.95rem;
+        padding: 14px 32px; border-radius: 100px; text-decoration: none;
+        transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+        box-shadow: 0 8px 32px rgba(233,28,87,0.25);
+    }
+    .ut-btn-primary:hover { background: #c4154a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(233,28,87,0.35); }
+
+    .ut-btn-outline {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: transparent; color: #fff; font-weight: 600; font-size: 0.95rem;
+        padding: 14px 32px; border-radius: 100px; border: 1px solid var(--stroke); text-decoration: none;
+        transition: background 0.25s, transform 0.25s, border-color 0.25s;
+    }
+    .ut-btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); border-color: rgba(255,255,255,0.25); }
+
+    /* FEATURES */
+    .ut-features { padding: 100px 24px; }
+    .ut-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .ut-features-left { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .ut-features-video { width: 100%; max-width: 440px; border-radius: 20px; border: 1px solid var(--stroke); box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+    .ut-features-desc { font-size: 0.95rem; color: var(--sub); line-height: 1.85; text-align: center; max-width: 420px; }
+    .ut-features-right h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center; }
+
+    .ut-dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .ut-dl-card {
+        display: flex; flex-direction: column; align-items: center; gap: 12px;
+        background: var(--card); border: 1px solid var(--stroke); border-radius: 18px;
+        padding: 28px 20px; text-decoration: none; color: #fff;
+        transition: border-color 0.25s, transform 0.25s;
+    }
+    .ut-dl-card:hover { border-color: rgba(233,28,87,0.4); transform: translateY(-3px); }
+    .ut-dl-card svg { width: 38px; height: 38px; }
+    .ut-dl-card span { font-size: 0.85rem; font-weight: 600; text-align: center; }
+
+    .ut-steps {
+        background: var(--card); border: 1px solid var(--stroke); border-radius: 18px;
+        padding: 24px; font-size: 0.85rem; color: var(--sub); line-height: 1.7;
+    }
+    .ut-steps h4 { color: #fff; font-weight: 600; margin-bottom: 4px; }
+    .ut-steps h4.mt { margin-top: 16px; }
+    .ut-steps li { list-style: none; padding-left: 16px; position: relative; }
+    .ut-steps li::before { content: '–'; color: var(--pink); position: absolute; left: 0; }
+
+    /* SECTION BLOCKS */
+    .ut-section { padding: 80px 24px; }
+    .ut-section-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: 60px; letter-spacing: -0.02em; }
+    .ut-section-title span { color: var(--pink); }
+    .ut-sub-label { text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--sub); margin-top: 40px; margin-bottom: 24px; }
+
+    .ut-logo-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 32px 48px; max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .ut-logo-item { display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+    .ut-logo-item:hover { transform: translateY(-4px); }
+    .ut-logo-item img { height: 72px; width: auto; max-width: 140px; object-fit: contain; opacity: 0.9; transition: opacity 0.25s; }
+    .ut-logo-item img:hover { opacity: 1; }
+
+    #reach .ut-logo-item img[alt="AOU Logo"],
+    #reach .ut-logo-item img[alt="SAU Logo"] {
+        filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(2000%) hue-rotate(200deg) brightness(0.8);
+    }
+    #reach .ut-logo-item img[alt="Yanbu Logo"] { filter: grayscale(100%) brightness(2.5); }
+
+    /* TEAM */
+    .ut-team { padding: 100px 24px; position: relative; }
+    .ut-team-glow {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 500px; height: 500px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(233,28,87,0.06) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .ut-team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .ut-team-card {
+        background: var(--card); border: 1px solid var(--stroke); border-radius: 20px;
+        padding: 24px 16px; display: flex; flex-direction: column; align-items: center; text-align: center;
+        transition: border-color 0.25s, transform 0.25s;
+    }
+    .ut-team-card:hover { border-color: rgba(233,28,87,0.4); transform: translateY(-4px); }
+    .ut-avatar {
+        width: 88px; height: 88px; border-radius: 50%; overflow: hidden;
+        border: 2px solid var(--stroke); margin-bottom: 14px; background: var(--dark);
+        transition: border-color 0.25s; flex-shrink: 0;
+    }
+    .ut-team-card:hover .ut-avatar { border-color: rgba(233,28,87,0.5); }
+    .ut-avatar img { width: 100%; height: 100%; object-fit: cover; position: static !important; top: auto !important; left: auto !important; transform: none !important; }
+    .ut-name-row { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; font-size: 0.85rem; font-weight: 700; line-height: 1.3; }
+    .ut-name { font-size: 0.85rem; font-weight: 700; line-height: 1.3; }
+    .ut-li-btn { display: flex; align-items: center; justify-content: center; color: var(--sub); transition: color 0.25s; text-decoration: none; flex-shrink: 0; }
+    .ut-li-btn:hover { color: var(--pink); }
+    .ut-li-btn svg { width: 14px; height: 14px; fill: currentColor; }
+    .ut-titles { display: flex; flex-direction: column; gap: 2px; }
+    .ut-title-text { font-size: 0.72rem; color: var(--sub); line-height: 1.4; }
+
+    /* FOOTER */
+    .ut-footer { border-top: 1px solid var(--stroke); padding: 48px 24px; }
+    .ut-footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; }
+    .ut-footer-logo { display: flex; align-items: center; }
+    .ut-footer-logo img { height: 32px; width: auto; }
+    .ut-footer-contact { display: flex; align-items: center; justify-content: center; gap: 14px; flex: 1; }
+    .ut-footer-label { font-size: 0.85rem; font-weight: 500; color: var(--sub); }
+    .ut-socials { display: flex; gap: 10px; }
+    .ut-social-btn {
+        width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.04);
+        border: 1px solid var(--stroke); display: flex; align-items: center; justify-content: center;
+        text-decoration: none; transition: background 0.25s, border-color 0.25s;
+    }
+    .ut-social-btn:hover { background: rgba(233,28,87,0.1); border-color: rgba(233,28,87,0.4); }
+    .ut-social-btn svg { width: 15px; height: 15px; fill: white; }
+    .ut-footer-copy { font-size: 0.8rem; color: var(--sub); text-align: right; margin-top: 0; }
+    .ut-footer-copy a { color: var(--sub); text-decoration: none; transition: color 0.25s; }
+    .ut-footer-copy a:hover { color: #fff; }
+    .ut-divider { margin: 0 6px; }
+
+    /* ANIMATIONS */
+    @keyframes utFadeUp {
+        from { opacity: 0; transform: translateY(28px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes utPulseRing {
+        0%,100% { opacity: 0.4; transform: translate(-50%,-50%) scale(1); }
+        50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.04); }
+    }
+    @keyframes utGlowPulse {
+        0%,100% { opacity: 0.8; transform: translate(-50%,-60%) scale(1); }
+        50%      { opacity: 1;   transform: translate(-50%,-60%) scale(1.08); }
+    }
+    @keyframes utBlink {
+        0%,100% { opacity: 1; }
+        50%      { opacity: 0.3; }
+    }
+    @keyframes utLineGrow {
+        from { width: 0; opacity: 0; }
+        to { width: 60%; opacity: 1; }
+    }
+    @keyframes utScrollLine {
+        0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+        50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+        100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+    }
+    .ut-reveal {
+        opacity: 0; transform: translateY(28px);
+        transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ut-reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .ut-features-grid { grid-template-columns: 1fr; gap: 48px; }
+        .ut-team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+        .ut-hero h1 { white-space: normal; }
+        .ut-logo img { height: 110px; }
+        .ut-dl-grid { grid-template-columns: 1fr; }
+        .ut-team-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .ut-avatar { width: 70px; height: 70px; }
+        .ut-footer-inner { flex-direction: column; align-items: center; text-align: center; }
+        .ut-footer-copy { text-align: center; margin-left: 0; margin-right: 0; }
+        .ut-logo-item img { height: 54px; }
+        .ut-footer-logo img { height: 26px; }
+    }
+
+    /* Team bridge: map legacy team markup to UT styles */
+    #team.team { padding: 100px 24px; position: relative; background: transparent !important; overflow: hidden; color: var(--white); }
+    #team.team::before {
+        content: '';
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px; height: 500px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(233,28,87,0.06) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 1;
+    }
+    #team.team .container { position: relative; z-index: 2; }
+    #team.team h2.ut-section-title {
+        margin-bottom: 60px;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        -webkit-text-fill-color: initial !important;
+        background-clip: initial !important;
+        color: var(--white) !important;
+        text-align: center;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+    }
+    #team.team h2.ut-section-title span { color: var(--pink); }
+    #team.team .team-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+        max-width: 1000px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    #team.team .team-member {
+        background: var(--card); border: 1px solid var(--stroke); border-radius: 20px;
+        padding: 24px 16px; display: flex; flex-direction: column; align-items: center; text-align: center;
+        transition: border-color 0.25s, transform 0.25s;
+    }
+    #team.team .team-member:hover { border-color: rgba(233,28,87,0.4); transform: translateY(-4px); }
+    #team.team .profile-circle {
+        width: 88px; height: 88px; border-radius: 50%; overflow: hidden;
+        border: 2px solid var(--stroke); margin-bottom: 14px; background: var(--dark);
+        transition: border-color 0.25s; flex-shrink: 0;
+    }
+    #team.team .team-member:hover .profile-circle { border-color: rgba(233,28,87,0.5); }
+    #team.team .profile-circle img {
+        width: 100% !important; height: 100% !important; object-fit: cover !important;
+        position: static !important; top: auto !important; left: auto !important; transform: none !important;
+    }
+    #team.team .member-name {
+        display: flex; align-items: center; justify-content: center; gap: 6px;
+        margin-bottom: 6px; font-size: 0.85rem; font-weight: 700; line-height: 1.3; color: #fff;
+    }
+    #team.team .linkedin-link {
+        display: flex; align-items: center; justify-content: center; color: var(--sub);
+        transition: color 0.25s; text-decoration: none; flex-shrink: 0;
+    }
+    #team.team .linkedin-link:hover { color: var(--pink); }
+    #team.team .linkedin-link svg { width: 14px; height: 14px; fill: currentColor; }
+    #team.team .member-title { font-size: 0.72rem; color: var(--sub); line-height: 1.4; display: block; }
+    #team.team .profile-avatar-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width: 900px) {
+        #team.team .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+        #team.team .team-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        #team.team .profile-circle { width: 70px; height: 70px; }
+    }
+
+    /* Footer bridge: map legacy footer markup to UT styles */
+    footer {
+        border-top: 1px solid var(--stroke);
+        padding: 48px 24px;
+        color: var(--white);
+    }
+    .footer-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+    }
+    .footer-logo img { height: 32px; width: auto; }
+    .footer-contact { display: flex; align-items: center; gap: 14px; }
+    .footer-contact h3 { margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--sub); }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+        width: 36px; height: 36px; border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--stroke);
+        display: flex; align-items: center; justify-content: center;
+        text-decoration: none;
+        transition: background 0.25s, border-color 0.25s;
+    }
+    .footer-social a:hover { background: rgba(233,28,87,0.1); border-color: rgba(233,28,87,0.4); }
+    .footer-social svg { width: 15px; height: 15px; fill: white; }
+    .footer-copyright {
+        font-size: 0.8rem;
+        color: var(--sub);
+        text-align: right;
+        margin-top: 22px;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-links { font-size: 0.8rem; margin-top: 4px; }
+    .footer-links a { color: var(--sub); text-decoration: none; transition: color 0.25s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-links span { color: var(--sub); }
+
+    @media (max-width: 768px) {
+        .footer-content { flex-direction: column; align-items: center; text-align: center; gap: 32px; }
+        .footer-copyright { text-align: center; margin-left: 0; margin-right: 0; }
+        .footer-links { text-align: center; }
+        .footer-logo { height: 26px; }
+        .footer-logo img { height: 26px; width: auto; }
+    }
+
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <img src="/assets/longlogo.png" alt="UniTok Logo">
+    <div class="ut-wrap">
+        <header class="ut-header">
+            <div class="ut-logo">
+                <img src="/assets/longlogo.png" alt="UniTok Logo" />
             </div>
-        </nav>
-    </header>
+        </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Welcome to UniTok</h1>
+        <section id="home" class="ut-hero">
+            <canvas class="ut-hero-canvas"></canvas>
+            <div class="ut-hero-rings">
+                <div class="ut-ring"></div>
+                <div class="ut-ring"></div>
+                <div class="ut-ring"></div>
+                <div class="ut-ring"></div>
+            </div>
+            <div class="ut-hero-glow"></div>
+            <div class="ut-container">
+                <h1>Welcome to <span class="ut-line2">UniTok</span></h1>
                 <p>Empowering Gen Z minds through a "Central App" that speaks their language</p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="#features" class="cta-button">Download UniTok</a>
-                    <a href="https://business.unitokapp.com" target="_blank" class="cta-button">Unitok Business</a>
+                <div class="ut-hero-btns">
+                    <a href="#features" class="ut-btn-primary">Download UniTok</a>
+                    <a href="https://business.unitokapp.com" target="_blank" rel="noopener noreferrer" class="ut-btn-outline">Unitok Business</a>
+                </div>
+            </div>
+            <div class="ut-hero-scroll">
+                <div class="ut-scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <section id="features" class="ut-features">
+            <div class="ut-features-grid ut-reveal">
+                <div class="ut-features-left">
+                    <video class="ut-features-video" autoplay muted loop playsinline>
+                        <source src="/assets/Unitok.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="ut-features-desc">
+                        UniTok is the Central App for Students, built to close the gap between what universities provide and what the market needs.
+                        It brings all your university opportunities, events, competitions, and internships into one place, in a Gen Z-friendly style that makes growth fun and rewarding.
+                    </p>
+                </div>
+                <div class="ut-features-right">
+                    <h2>Download UniTok Now</h2>
+                    <div class="ut-dl-grid">
+                        <a href="https://drive.google.com/file/d/1aS0nLPhoBSWqBFmRRJyd7BbpvcnUe723/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="ut-dl-card">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                            </svg>
+                            <span>Download for Android</span>
+                        </a>
+                        <a href="https://apps.apple.com/sa/app/unitok-app/id6745688652" target="_blank" rel="noopener noreferrer" class="ut-dl-card">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            <span>Download for iOS</span>
+                        </a>
+                    </div>
+                    <div class="ut-steps">
+                        <h4>Android:</h4>
+                        <ul>
+                            <li>Download the APK through the link</li>
+                            <li>Install the APK on your device</li>
+                            <li>Register your student or faculty account through Sign Up</li>
+                        </ul>
+                        <h4 class="mt">iOS:</h4>
+                        <ul>
+                            <li>Install UniTok through the link</li>
+                            <li>Register your student or faculty account through Sign Up</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="features">
-            <div class="container">
-                <div class="features-content">
-                    <div class="features-left">
-                        <video class="features-video" autoplay muted loop playsinline>
-                            <source src="/assets/Unitok.MP4" type="video/mp4">
-                            <source src="/assets/Unitok.MP4" type="video/mp4; codecs=avc1.42E01E">
-                            Your browser does not support the video tag.
-                        </video>
-                        <p class="features-description">
-                            UniTok is the Central App for Students, built to close the gap between what universities provide and what the market needs. It brings all your university opportunities, events, competitions, and internships into one place, in a Gen Z–friendly style that makes growth fun and rewarding. 🚀
-                        </p>
+        <section id="partners" class="ut-section">
+            <h2 class="ut-section-title ut-reveal">Our <span>Partners</span></h2>
+
+            <div class="ut-reveal">
+                <p class="ut-sub-label">Universities</p>
+                <div class="ut-logo-grid">
+                    <div class="ut-logo-item">
+                        <img src="/assets/Universities/UPM.png" alt="UPM Logo" />
                     </div>
-                    <div class="features-right">
-                        <h2 class="download-title">Download UniTok Now</h2>
-                        <div class="download-buttons">
-                            <a href="https://drive.google.com/file/d/1aS0nLPhoBSWqBFmRRJyd7BbpvcnUe723/view?usp=sharing" target="_blank" class="download-button">
-                                <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                                </svg>
-                                <span class="download-label">Download for Android</span>
-                            </a>
-                            <a href="https://apps.apple.com/sa/app/unitok-app/id6745688652" target="_blank" class="download-button">
-                                <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                                </svg>
-                                <span class="download-label">Download for iOS</span>
-                            </a>
-                        </div>
-                        <div class="download-steps">
-                            <h4>Android:</h4>
-                            <ul>
-                                <li>Download the APK through the link</li>
-                                <li>Install the APK on your device</li>
-                                <li>Register your student or faculty account through Sign Up</li>
-                            </ul><br>
-                            <h4>iOS:</h4>
-                            <ul>
-                                <li>Install UniTok through the link</li>
-                                <li>Register your student or faculty account through Sign Up</li>
-                            </ul>
-                        </div>
-                    </div>
+                </div>
+            </div>
+
+            <div class="ut-reveal">
+                <p class="ut-sub-label">Clubs</p>
+                <div class="ut-logo-grid">
+                    <div class="ut-logo-item"><img src="/assets/clubs/Software.svg" alt="Software Club Logo" /></div>
+                    <div class="ut-logo-item"><img src="/assets/clubs/Cyber.png" alt="Cyber Club Logo" /></div>
+                    <div class="ut-logo-item"><img src="/assets/clubs/Electrical.png" alt="Electrical Club Logo" /></div>
+                    <div class="ut-logo-item"><img src="/assets/clubs/Google.png" alt="Google Club Logo" /></div>
+                    <div class="ut-logo-item"><img src="/assets/clubs/Math.png" alt="Math Club Logo" /></div>
+                    <div class="ut-logo-item"><img src="/assets/clubs/Ai.png" alt="AI Club Logo" /></div>
+                    <div class="ut-logo-item"><img src="/assets/clubs/ENTcenter.png" alt="ENT Center Logo" /></div>
+                </div>
+            </div>
+
+            <div class="ut-reveal">
+                <p class="ut-sub-label">Advertisers</p>
+                <div class="ut-logo-grid">
+                    <div class="ut-logo-item"><img src="/assets/Advertisers/BalsamPharmacy.png" alt="Balsam Pharmacy Logo" /></div>
                 </div>
             </div>
         </section>
 
-        <section id="partners" class="marquees-section">
-            <h2 class="partners-main-title">OUR PARTNERS</h2>
-                <div class="marquee-container">
-                <h3 class="marquee-title">Universities</h3>
-                    <div class="universities-grid">
-                            <div class="university-item">
-                                <img src="/assets/Universities/UPM.png" alt="UPM Logo">
-                            </div>
-                    </div>
-                </div>
-
-                <div class="marquee-container">
-                    <h3 class="marquee-title">Clubs</h3>
-                    <div class="clubs-grid">
-                            <div class="club-item">
-                                <img src="/assets/clubs/Software.svg" alt="Software Club Logo" class="software-logo">
-                            </div>
-                            <div class="club-item">
-                                <img src="/assets/clubs/Cyber.png" alt="Cyber Club Logo">
-                            </div>
-                            <div class="club-item">
-                                <img src="/assets/clubs/Electrical.png" alt="Electrical Club Logo">
-                            </div>
-                            <div class="club-item">
-                                <img src="/assets/clubs/Google.png" alt="Google Club Logo" class="google-logo">
-                            </div>
-                            <div class="club-item">
-                                <img src="/assets/clubs/Math.png" alt="Math Club Logo">
-                            </div>
-                            <div class="club-item">
-                                <img src="/assets/clubs/Ai.png" alt="AI Club Logo">
-                            </div>
-                            <div class="club-item">
-                                <img src="/assets/clubs/ENTcenter.png" alt="ENT Center Logo">
-                            </div>
-                    </div>
-                </div>
-
-                <div class="marquee-container">
-                    <h3 class="marquee-title">Advertisers</h3>
-                    <div class="marquee marquee-advertisers">
-                        <div class="marquee-content single-item">
-                            <div class="marquee-item">
-                                <img src="/assets/Advertisers/BalsamPharmacy.png" alt="Balsam Pharmacy Logo">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <section id="reach" class="marquees-section">
-            <h2 class="partners-main-title">OUR REACH</h2>
-            <div class="marquee-container">
-                <div class="universities-grid">
-                    <div class="university-item">
-                        <img src="/assets/Universities/AOU.png" alt="AOU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/PSU.svg" alt="PSU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/uofm.png" alt="UOFM Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/TU.svg" alt="TU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/pnu.svg" alt="PNU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/almaarefa.png" alt="Almaarefa Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/KAU.webp" alt="KAU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/QU.webp" alt="QU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/SAU.png" alt="SAU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/yanbu.png" alt="Yanbu Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/kfupm.svg" alt="KFUPM Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/PMU.png" alt="PMU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/shaqra.jpg.webp" alt="Shaqra Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/KFU.png" alt="KFU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/imamu.png" alt="ImamU Logo">
-                    </div>
-                    <div class="university-item">
-                        <img src="/assets/Universities/KSU.svg.png" alt="KSU Logo">
-                    </div>
-                </div>
+        <section id="reach" class="ut-section">
+            <h2 class="ut-section-title ut-reveal">Our <span>Reach</span></h2>
+            <div class="ut-logo-grid ut-reveal">
+                <div class="ut-logo-item"><img src="/assets/Universities/AOU.png" alt="AOU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/PSU.svg" alt="PSU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/uofm.png" alt="UOFM Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/TU.svg" alt="TU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/pnu.svg" alt="PNU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/almaarefa.png" alt="Almaarefa Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/KAU.webp" alt="KAU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/QU.webp" alt="QU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/SAU.png" alt="SAU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/yanbu.png" alt="Yanbu Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/kfupm.svg" alt="KFUPM Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/PMU.png" alt="PMU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/shaqra.jpg.webp" alt="Shaqra Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/KFU.png" alt="KFU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/imamu.png" alt="ImamU Logo" /></div>
+                <div class="ut-logo-item"><img src="/assets/Universities/KSU.svg.png" alt="KSU Logo" /></div>
             </div>
         </section>
 
         <section id="team" class="team">
             <div class="container">
-                <h2>Meet Our Team</h2>
+                <h2 class="ut-section-title ut-reveal">Meet the <span>Team</span></h2>
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/team/FarisYacte.png" alt="Faris Yacte" class="profile-faris">
+                                    <a href="https://www.linkedin.com/in/farisbisher/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Faris Yacte LinkedIn profile">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEJd7XfRUFPfQ/profile-displayphoto-shrink_800_800/B4DZa5brraG4Ac-/0/1746867764561?e=1776297600&amp;v=beta&amp;t=DQtoVag-eeQgDigrAOwDStklGg5J631u1VQy_YWWHzU" alt="Faris Yacte" class="profile-faris">
+                                    </a>
                         </div>
                         <div class="member-name">
                             Faris Yacte
@@ -1184,7 +1531,9 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/team/AbdullahAlzubi.png" alt="Abdullah Alzubi" class="profile-abdullah">
+                                    <a href="https://www.linkedin.com/in/auoz23/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Abdullah Alzubi LinkedIn profile">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQGYnaUXmzwzRQ/profile-displayphoto-crop_800_800/B4EZnB4xo5HMAI-/0/1759894512080?e=1776297600&amp;v=beta&amp;t=9o2sLBuFdFaj7vzcAM-IpvC1hrK24LEZHiJSPj7ZoR0" alt="Abdullah Alzubi" class="profile-abdullah">
+                                    </a>
                         </div>
                         <div class="member-name">
                             Abdullah Alzubi
@@ -1199,7 +1548,9 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/team/MohammedAbu-Khurayiba.png" alt="Mohammed Abu-Khurayiba" class="profile-mohammed-abu">
+                                    <a href="https://www.linkedin.com/in/mohammedabukhraybeh/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Mohammed Abu-Khraybeh LinkedIn profile">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFhTkTMamnLmA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1696453185264?e=1776297600&amp;v=beta&amp;t=i8kDvGb0WlQb0KuKp3eCGbJEMhgGPFbG62SwJMQdGEk" alt="Mohammed Abu-Khurayiba" class="profile-mohammed-abu">
+                                    </a>
                         </div>
                         <div class="member-name">
                             Mohammed Abu-Khraybeh
@@ -1213,7 +1564,9 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/team/LojaenAyash.png" alt="Lojaen Ayash" class="profile-lojaen">
+                                    <a href="https://www.linkedin.com/in/lojaen-ayash-a194972b3/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Lojaen Ayash LinkedIn profile">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQFNJfiuT9_otQ/profile-displayphoto-crop_800_800/B4DZznQtvrIkAI-/0/1773406445526?e=1776297600&amp;v=beta&amp;t=CK2H7MItk3FkLxxtxNLbZ6YW7GWsyb_oYrvFchj585M" alt="Lojaen Ayash" class="profile-lojaen">
+                                    </a>
                         </div>
                         <div class="member-name">
                             Lojaen Ayash
@@ -1228,7 +1581,9 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/team/TasneemAlhattami.png" alt="Tasneem Alhattami" class="profile-tasneem">
+                                    <a href="https://www.linkedin.com/in/tasneem-alhattami-890023173/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Tasneem Alhattami LinkedIn profile">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGG3KfHWH5_Ng/profile-displayphoto-crop_800_800/B4DZw8PQWAHMAI-/0/1770537159612?e=1776297600&amp;v=beta&amp;t=qRfitJ9_3NsQnmWkpQwwmV-BlEKDXP9qpUKarwvex2k" alt="Tasneem Alhattami" class="profile-tasneem">
+                                    </a>
                         </div>
                         <div class="member-name">
                             Tasneem Alhattami
@@ -1244,7 +1599,9 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/team/ArwaGhilan.png" alt="Arwa Ghilan" class="profile-arwa">
+                                    <a href="https://www.linkedin.com/in/arwa-tawfiq-ghilan-b03b0422a/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Arwa Ghilan LinkedIn profile">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEQ9M_JzS0mWw/profile-displayphoto-crop_800_800/B4EZr4mdD9KgAM-/0/1765107428573?e=1776297600&amp;v=beta&amp;t=DuQa2-8rq3L2EiVqhr9VCyzC2QI--tBiPFUhNHuqIpY" alt="Arwa Ghilan" class="profile-arwa">
+                                    </a>
                         </div>
                         <div class="member-name">
                             Arwa Ghilan
@@ -1260,7 +1617,9 @@
                     </div>
                     <div class="team-member">
                         <div class="profile-circle">
-                            <img src="/assets/team/RanaEhab.png" alt="Rana Ehab" class="profile-rana">
+                                    <a href="https://www.linkedin.com/in/rana-ehab-b51204311/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Rana Ehab LinkedIn profile">
+                                        <img src="https://media.licdn.com/dms/image/v2/D4D35AQGVuoeUs-rPfg/profile-framedphoto-shrink_800_800/B4DZulnA2IJkAg-/0/1768010026790?e=1775048400&amp;v=beta&amp;t=_Y9B7vXlDAlBLpaXc-1MFrGzDWOR5zz0f0SvqsclKAs" alt="Rana Ehab" class="profile-rana">
+                                    </a>
                         </div>
                         <div class="member-name">
                             Rana Ehab
@@ -1278,83 +1637,122 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="/assets/logo.png" alt="UniTok Logo">
+    <footer class="ut-footer">
+        <div class="ut-footer-inner">
+            <div class="ut-footer-logo">
+                <img src="/assets/longlogo.png" alt="UniTok Logo" />
+            </div>
+            <div class="ut-footer-contact">
+                <span class="ut-footer-label">Contact Us</span>
+                <div class="ut-socials">
+                    <a href="https://www.linkedin.com/company/unitok-app/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="ut-social-btn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/+vffvh0RwZDljOTBk" target="_blank" rel="noopener noreferrer" class="ut-social-btn" title="Telegram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
                 </div>
-                <div class="footer-contact">
-                    <h3>Contact Us</h3>
-                    <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/unitok/"_blank" title="LinkedIn">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                        <a href="https://t.me/+vffvh0RwZDljOTBk" target="_blank" title="Telegram">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-copyright">
-                    <p>&copy; 2025 Unitok. All rights reserved.</p>
-                    <div class="footer-links">
-                        <a href="/pp.html">Privacy Policy</a>
-                        <span style="margin: 0 0.5rem; color: rgba(255, 255, 255, 0.8);">|</span>
-                        <a href="https://business.unitokapp.com" target="_blank">Unitok Business</a>
-                    </div>
-                </div>
+            </div>
+            <div class="ut-footer-copy">
+                <p>&copy; 2025 Unitok. All rights reserved.</p>
+                <p style="margin-top: 4px;">
+                    <a href="/pp.html">Privacy Policy</a>
+                    <span class="ut-divider">|</span>
+                    <a href="https://business.unitokapp.com" target="_blank" rel="noopener noreferrer">Unitok Business</a>
+                </p>
             </div>
         </div>
     </footer>
+    </div>
 
     <script>
-        // Modified scrolling behavior for hero section
-        document.addEventListener('DOMContentLoaded', function() {
-            const hero = document.querySelector('.hero');
-            
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                
-                if (scrolled > 100) {
-                    hero.classList.add('scrolled');
-                } else {
-                    hero.classList.remove('scrolled');
-                }
-            });
+        document.addEventListener('DOMContentLoaded', function () {
+            // Ensure legacy team cards also use UT reveal animation.
+            document.querySelectorAll('.team-member').forEach(el => el.classList.add('ut-reveal'));
 
-            // Intersection Observer for scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+            const els = document.querySelectorAll('.ut-reveal');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        obs.unobserve(e.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-            // Observe elements for animation
-            const animatedElements = document.querySelectorAll('.team-member, .marquee-container, .features-content');
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
+            els.forEach(el => obs.observe(el));
 
-            // Add staggered animation delays to team members
-            const teamMembers = document.querySelectorAll('.team-member');
-            teamMembers.forEach((member, index) => {
-                member.style.animationDelay = `${index * 0.1}s`;
-            });
+            // Particle canvas (hero background)
+            const canvas = document.querySelector('.ut-hero-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    let raf;
+                    const resize = () => {
+                        canvas.width = canvas.offsetWidth;
+                        canvas.height = canvas.offsetHeight;
+                    };
+                    resize();
+                    window.addEventListener('resize', resize);
+
+                    const COUNT = 72;
+                    const particles = Array.from({ length: COUNT }, () => ({
+                        x: Math.random(),
+                        y: Math.random(),
+                        r: Math.random() * 1.6 + 0.4,
+                        vx: (Math.random() - 0.5) * 0.0003,
+                        vy: (Math.random() - 0.5) * 0.0003,
+                        alpha: Math.random() * 0.5 + 0.15,
+                        pink: Math.random() < 0.25,
+                    }));
+
+                    const draw = () => {
+                        const W = canvas.width;
+                        const H = canvas.height;
+                        ctx.clearRect(0, 0, W, H);
+
+                        particles.forEach(p => {
+                            p.x = (p.x + p.vx + 1) % 1;
+                            p.y = (p.y + p.vy + 1) % 1;
+                            ctx.beginPath();
+                            ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
+                            ctx.fillStyle = p.pink
+                                ? `rgba(233,28,87,${p.alpha})`
+                                : `rgba(112,117,153,${p.alpha * 0.7})`;
+                            ctx.fill();
+                        });
+
+                        // Faint connecting lines
+                        for (let i = 0; i < particles.length; i++) {
+                            for (let j = i + 1; j < particles.length; j++) {
+                                const dx = (particles[i].x - particles[j].x) * W;
+                                const dy = (particles[i].y - particles[j].y) * H;
+                                const dist = Math.sqrt(dx * dx + dy * dy);
+                                if (dist < 110) {
+                                    ctx.beginPath();
+                                    ctx.moveTo(particles[i].x * W, particles[i].y * H);
+                                    ctx.lineTo(particles[j].x * W, particles[j].y * H);
+                                    ctx.strokeStyle = `rgba(233,28,87,${0.06 * (1 - dist / 110)})`;
+                                    ctx.lineWidth = 0.5;
+                                    ctx.stroke();
+                                }
+                            }
+                        }
+
+                        raf = requestAnimationFrame(draw);
+                    };
+
+                    draw();
+                    window.addEventListener('beforeunload', () => {
+                        if (raf) cancelAnimationFrame(raf);
+                        window.removeEventListener('resize', resize);
+                    });
+                }
+            }
         });
     </script>
 </body>
