@@ -1255,13 +1255,7 @@
     /* Team bridge: map legacy team markup to UT styles */
     #team.team { padding: 100px 24px; position: relative; background: transparent !important; overflow: hidden; color: var(--white); }
     #team.team::before {
-        content: '';
-        position: absolute; top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 500px; height: 500px; border-radius: 50%;
-        background: radial-gradient(circle, rgba(233,28,87,0.06) 0%, transparent 70%);
-        pointer-events: none;
-        z-index: 1;
+        display: none;
     }
     #team.team .container { position: relative; z-index: 2; }
     #team.team h2.ut-section-title {
@@ -1288,14 +1282,62 @@
     }
     #team.team .team-member:hover { border-color: rgba(233,28,87,0.4); transform: translateY(-4px); }
     #team.team .profile-circle {
-        width: 88px; height: 88px; border-radius: 50%; overflow: hidden;
-        border: 2px solid var(--stroke); margin-bottom: 14px; background: var(--dark);
-        transition: border-color 0.25s; flex-shrink: 0;
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid var(--stroke);
+        margin-bottom: 14px;
+        background: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        transition: border-color 0.25s;
+        flex-shrink: 0;
+        position: relative;
+        display: block;
+        padding: 0;
     }
-    #team.team .team-member:hover .profile-circle { border-color: rgba(233,28,87,0.5); }
+    #team.team .profile-circle::before {
+        display: none !important;
+        content: none !important;
+    }
+    #team.team .profile-circle:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    #team.team .team-member:hover .profile-circle { border-color: rgba(233,28,87,0.45); }
+    #team.team .profile-avatar-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 0;
+    }
     #team.team .profile-circle img {
-        width: 100% !important; height: 100% !important; object-fit: cover !important;
-        position: static !important; top: auto !important; left: auto !important; transform: none !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        position: absolute !important;
+        inset: 0 !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        border-radius: 0 !important;
+    }
+    /* Tighter source crops read as “zoomed”; shrink to match Abdullah / Mohammed framing */
+    #team.team .profile-circle img.profile-faris,
+    #team.team .profile-circle img.profile-lojaen,
+    #team.team .profile-circle img.profile-tasneem,
+    #team.team .profile-circle img.profile-arwa,
+    #team.team .profile-circle img.profile-rana {
+        width: 76% !important;
+        height: 76% !important;
+        inset: auto !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
     #team.team .member-name {
         display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -1308,11 +1350,6 @@
     #team.team .linkedin-link:hover { color: var(--pink); }
     #team.team .linkedin-link svg { width: 14px; height: 14px; fill: currentColor; }
     #team.team .member-title { font-size: 0.72rem; color: var(--sub); line-height: 1.4; display: block; }
-    #team.team .profile-avatar-link {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
 
     @media (max-width: 900px) {
         #team.team .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1514,7 +1551,7 @@
                     <div class="team-member">
                         <div class="profile-circle">
                                     <a href="https://www.linkedin.com/in/farisbisher/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Faris Yacte LinkedIn profile">
-                                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEJd7XfRUFPfQ/profile-displayphoto-shrink_800_800/B4DZa5brraG4Ac-/0/1746867764561?e=1776297600&amp;v=beta&amp;t=DQtoVag-eeQgDigrAOwDStklGg5J631u1VQy_YWWHzU" alt="Faris Yacte" class="profile-faris">
+                                        <img src="/assets/team/FarisYacte.png" alt="Faris Yacte" class="profile-faris">
                                     </a>
                         </div>
                         <div class="member-name">
@@ -1532,7 +1569,7 @@
                     <div class="team-member">
                         <div class="profile-circle">
                                     <a href="https://www.linkedin.com/in/auoz23/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Abdullah Alzubi LinkedIn profile">
-                                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQGYnaUXmzwzRQ/profile-displayphoto-crop_800_800/B4EZnB4xo5HMAI-/0/1759894512080?e=1776297600&amp;v=beta&amp;t=9o2sLBuFdFaj7vzcAM-IpvC1hrK24LEZHiJSPj7ZoR0" alt="Abdullah Alzubi" class="profile-abdullah">
+                                        <img src="/assets/team/AbdullahAlzubi.png" alt="Abdullah Alzubi" class="profile-abdullah">
                                     </a>
                         </div>
                         <div class="member-name">
@@ -1549,7 +1586,7 @@
                     <div class="team-member">
                         <div class="profile-circle">
                                     <a href="https://www.linkedin.com/in/mohammedabukhraybeh/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Mohammed Abu-Khraybeh LinkedIn profile">
-                                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFhTkTMamnLmA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1696453185264?e=1776297600&amp;v=beta&amp;t=i8kDvGb0WlQb0KuKp3eCGbJEMhgGPFbG62SwJMQdGEk" alt="Mohammed Abu-Khurayiba" class="profile-mohammed-abu">
+                                        <img src="/assets/team/MohammedAbu-Khurayiba.png" alt="Mohammed Abu-Khurayiba" class="profile-mohammed-abu">
                                     </a>
                         </div>
                         <div class="member-name">
@@ -1565,7 +1602,7 @@
                     <div class="team-member">
                         <div class="profile-circle">
                                     <a href="https://www.linkedin.com/in/lojaen-ayash-a194972b3/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Lojaen Ayash LinkedIn profile">
-                                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQFNJfiuT9_otQ/profile-displayphoto-crop_800_800/B4DZznQtvrIkAI-/0/1773406445526?e=1776297600&amp;v=beta&amp;t=CK2H7MItk3FkLxxtxNLbZ6YW7GWsyb_oYrvFchj585M" alt="Lojaen Ayash" class="profile-lojaen">
+                                        <img src="/assets/team/LojaenAyash.png" alt="Lojaen Ayash" class="profile-lojaen">
                                     </a>
                         </div>
                         <div class="member-name">
@@ -1582,7 +1619,7 @@
                     <div class="team-member">
                         <div class="profile-circle">
                                     <a href="https://www.linkedin.com/in/tasneem-alhattami-890023173/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Tasneem Alhattami LinkedIn profile">
-                                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGG3KfHWH5_Ng/profile-displayphoto-crop_800_800/B4DZw8PQWAHMAI-/0/1770537159612?e=1776297600&amp;v=beta&amp;t=qRfitJ9_3NsQnmWkpQwwmV-BlEKDXP9qpUKarwvex2k" alt="Tasneem Alhattami" class="profile-tasneem">
+                                        <img src="/assets/team/TasneemAlhattami.png" alt="Tasneem Alhattami" class="profile-tasneem">
                                     </a>
                         </div>
                         <div class="member-name">
@@ -1600,7 +1637,7 @@
                     <div class="team-member">
                         <div class="profile-circle">
                                     <a href="https://www.linkedin.com/in/arwa-tawfiq-ghilan-b03b0422a/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Arwa Ghilan LinkedIn profile">
-                                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEQ9M_JzS0mWw/profile-displayphoto-crop_800_800/B4EZr4mdD9KgAM-/0/1765107428573?e=1776297600&amp;v=beta&amp;t=DuQa2-8rq3L2EiVqhr9VCyzC2QI--tBiPFUhNHuqIpY" alt="Arwa Ghilan" class="profile-arwa">
+                                        <img src="/assets/team/ArwaGhilan.png" alt="Arwa Ghilan" class="profile-arwa">
                                     </a>
                         </div>
                         <div class="member-name">
@@ -1618,7 +1655,7 @@
                     <div class="team-member">
                         <div class="profile-circle">
                                     <a href="https://www.linkedin.com/in/rana-ehab-b51204311/" target="_blank" rel="noopener noreferrer" class="profile-avatar-link" aria-label="Open Rana Ehab LinkedIn profile">
-                                        <img src="https://media.licdn.com/dms/image/v2/D4D35AQGVuoeUs-rPfg/profile-framedphoto-shrink_800_800/B4DZulnA2IJkAg-/0/1768010026790?e=1775048400&amp;v=beta&amp;t=_Y9B7vXlDAlBLpaXc-1MFrGzDWOR5zz0f0SvqsclKAs" alt="Rana Ehab" class="profile-rana">
+                                        <img src="/assets/team/RanaEhab.png" alt="Rana Ehab" class="profile-rana">
                                     </a>
                         </div>
                         <div class="member-name">
