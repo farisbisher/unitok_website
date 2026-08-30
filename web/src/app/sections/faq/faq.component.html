@@ -1,0 +1,25 @@
+<section id="faq" class="faq section">
+  <div class="container faq__inner">
+    <h2 uReveal>عندك سؤال؟</h2>
+
+    <div class="faq__list">
+      @for (item of items; track item.question; let i = $index) {
+        <div class="faq__item" [class.faq__item--open]="openIndex() === i" uReveal [uRevealY]="16">
+          <button class="faq__question" type="button" (click)="toggle(i)" [attr.aria-expanded]="openIndex() === i">
+            {{ item.question }}
+            <span class="faq__icon" aria-hidden="true">{{ openIndex() === i ? '−' : '+' }}</span>
+          </button>
+
+          @if (openIndex() === i) {
+            <p class="faq__answer">{{ item.answer }}</p>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="faq__contact" uReveal>
+      <p>عندك سؤال ثاني؟</p>
+      <a href="mailto:contact@unitokapp.com" class="faq__contact-link">تواصل معنا</a>
+    </div>
+  </div>
+</section>

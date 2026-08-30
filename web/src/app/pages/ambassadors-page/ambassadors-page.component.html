@@ -1,0 +1,87 @@
+<section class="section ipg-hero" style="--accent: var(--color-dusk)">
+  <div class="container ipg-hero__inner">
+    <span class="badge-chip ipg-eyebrow" uReveal>السفراء</span>
+    <h1 [uReveal]="0.05">انضم لسفراء يونيتوك</h1>
+    <p [uReveal]="0.1">
+      توصلك فرص تدريب ووظائف وتجارب حصرية، مع مستويات ومزايا تتطور كل ما استمريت في
+      رحلتك كسفير.
+    </p>
+    <a routerLink="/" fragment="features" class="btn btn--primary-dusk" [uReveal]="0.16">انضم للسفراء</a>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>🎓</span>
+      <h2 [uReveal]="0.05">تبدأ من جامعتك</h2>
+      <p [uReveal]="0.08">كسفير، تكون حلقة وصل بين يونيتوك وطلاب جامعتك.</p>
+      <p [uReveal]="0.14">
+        تشارك الجديد، تعرف مجتمعك على الفرص والتجارب الموجودة في يونيتوك، وتساعدنا نبني
+        حضورًا أقوى داخل جامعتك.
+      </p>
+    </div>
+
+    <div class="container ipg-split" style="margin-top: clamp(2.5rem, 6vw, 4rem)">
+      <div class="ipg-split__text">
+        <h2 uReveal>كل ما استمريت، تتقدم</h2>
+        <p [uReveal]="0.08">
+          رحلة السفراء مبنية على مستويات. تبدأ من أول مستوى، ومع نشاطك وإنجازك للمهام
+          تتقدم إلى مستويات أعلى.
+        </p>
+
+        <div class="ipg-ladder" style="align-items: flex-start" [uReveal]="0.14">
+          <span class="ipg-ladder__tier">🎬 تجربة</span>
+          <span class="ipg-ladder__arrow">↓</span>
+          <span class="ipg-ladder__tier">⚡ نشاط</span>
+          <span class="ipg-ladder__arrow">↓</span>
+          <span class="ipg-ladder__tier">⭐ نقاط</span>
+          <span class="ipg-ladder__arrow">↓</span>
+          <span class="ipg-ladder__tier">🏆 مستوى أعلى</span>
+        </div>
+
+        <p [uReveal]="0.2">وكل مستوى يفتح لك أشياء أكثر.</p>
+      </div>
+
+      <div class="ipg-split__visual" [uReveal]="0.1">
+        <app-phone-mockup>
+          <img class="ipg-split__phone-img" src="assets/images/cards/ambassadors.png" alt="فرص برنامج السفراء في يونيتوك" />
+        </app-phone-mockup>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-amaranth)">
+  <div class="container">
+    <h2 class="ipg-title" uReveal>وش تكسب من الرحلة؟</h2>
+
+    <div class="ipg-grid" style="margin-top: clamp(2rem, 5vw, 3rem)" uRevealGroup>
+      @for (benefit of benefits; track benefit.title) {
+        <article class="ipg-card card">
+          <span class="ipg-card__icon">{{ benefit.icon }}</span>
+          <h3>{{ benefit.title }}</h3>
+          <p>{{ benefit.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-teal)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>🚀</span>
+      <h2 [uReveal]="0.05">من سفير إلى مستوى أعلى</h2>
+      <p class="ipg-block__accent" [uReveal]="0.14">ابدأ. استمر. تطور.</p>
+      <p [uReveal]="0.2">وخلك جزءًا من الشيء اللي يصير في جامعتك.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-dusk)">
+  <div class="container ipg-cta">
+    <h2 uReveal>جاهز تبدأ؟</h2>
+    <a routerLink="/" fragment="features" class="btn btn--primary-dusk" [uReveal]="0.08">انضم لبرنامج السفراء</a>
+  </div>
+</section>

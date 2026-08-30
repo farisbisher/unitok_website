@@ -1,0 +1,371 @@
+// Shared layout for every internal "learn more" page (student programs, ambassadors,
+// and the three UniTok Business sub-pages). Each page sets --accent inline to pick its
+// brand color; everything else is generic.
+
+.ipg-hero {
+  padding-top: clamp(140px, 20vw, 200px);
+}
+
+.ipg-hero__inner {
+  max-width: 700px;
+  margin-inline: auto;
+  text-align: center;
+
+  h1 {
+    margin-top: 1rem;
+    font-size: clamp(2.2rem, 4.6vw, 3.2rem);
+  }
+
+  p {
+    margin-top: 1.25rem;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+  }
+
+  .btn {
+    margin-top: 2rem;
+  }
+}
+
+.ipg-eyebrow {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: color-mix(in srgb, var(--accent) 75%, #fff);
+}
+
+// Rounded, tinted panel — the recurring "framed" surface from the landing page
+// (hero/proof/business frames), reused so inner pages read as sections, not walls of text.
+.ipg-panel {
+  margin-inline: var(--container-pad);
+  padding: clamp(2rem, 5vw, 3.5rem) var(--container-pad);
+  border-radius: clamp(24px, 4vw, 44px);
+  background: color-mix(in srgb, var(--accent) 12%, var(--color-bg-elevated-2));
+
+  & + & {
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+}
+
+.ipg-panel--solid {
+  background: var(--accent);
+}
+
+.ipg-title {
+  text-align: center;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+}
+
+.ipg-subtitle {
+  max-width: 580px;
+  margin: 0.9rem auto 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 1.02rem;
+}
+
+.ipg-block {
+  max-width: 620px;
+  margin-inline: auto;
+  text-align: center;
+
+  h2 {
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+  }
+
+  p {
+    margin-top: 1.1rem;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+  }
+}
+
+.ipg-block__accent {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--accent) !important;
+}
+
+// A large emoji badge sitting above a text-only block, so plain paragraphs still read
+// as a "card" moment rather than a wall of text.
+.ipg-block__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.1rem;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  font-size: 1.7rem;
+}
+
+// Numbered step / feature list — a vertical stack of index + title + description.
+.ipg-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.ipg-flow__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+
+  h3 {
+    font-size: 1.15rem;
+    color: var(--color-text);
+  }
+
+  p {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+}
+
+.ipg-flow__index {
+  flex: none;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--accent);
+  direction: ltr;
+}
+
+// Short labelled tags, e.g. targeting criteria or content types.
+.ipg-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 680px;
+  margin: 1.75rem auto 0;
+}
+
+.ipg-chip {
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+// A → B → C progression, stacked vertically with connecting arrows.
+.ipg-ladder {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ipg-ladder__tier {
+  padding: 0.55rem 1.5rem;
+  border-radius: 999px;
+  background: var(--color-bg-elevated-2);
+  border: 1px solid var(--color-border);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+.ipg-ladder__arrow {
+  color: var(--accent);
+}
+
+// Icon-card benefit/value grid.
+.ipg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ipg-card {
+  padding: clamp(1.5rem, 3vw, 2rem);
+
+  h3 {
+    margin-top: 0.75rem;
+    font-size: 1.05rem;
+    color: var(--color-text);
+  }
+
+  p {
+    margin-top: 0.5rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+}
+
+.ipg-card__icon {
+  font-size: 1.5rem;
+}
+
+// Text + phone-mockup two column split.
+.ipg-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+
+  &--reverse {
+    .ipg-split__text {
+      order: 2;
+    }
+
+    .ipg-split__visual {
+      order: 1;
+    }
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+
+    .ipg-split__text,
+    .ipg-split__visual {
+      order: initial !important;
+      text-align: center;
+    }
+  }
+}
+
+.ipg-split__text {
+  h2 {
+    font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+  }
+
+  p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+  }
+}
+
+.ipg-split__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.ipg-split__phone-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Already-framed composite (real screenshot + baked-in device bezel), so it's placed
+// at its own natural aspect ratio instead of being cropped into a plain phone-mockup.
+.ipg-split__phone-composite {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.ipg-split__web-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+// Bold, short closing lines before the final CTA.
+.ipg-closing {
+  max-width: 620px;
+  margin-inline: auto;
+  text-align: center;
+
+  h2 {
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+  }
+}
+
+.ipg-closing__lines {
+  margin-top: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  line-height: 1.7;
+  color: var(--accent);
+}
+
+.ipg-cta {
+  max-width: 560px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  h2 {
+    font-size: clamp(2rem, 4.2vw, 2.7rem);
+  }
+
+  p {
+    color: var(--color-text-muted);
+  }
+
+  .btn {
+    margin-top: 0.5rem;
+  }
+}
+
+// Two-track final CTA — one card per audience (e.g. students vs. organizations).
+.ipg-cta-split {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 860px;
+  margin-inline: auto;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ipg-cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+  }
+
+  p {
+    font-size: 1.02rem;
+    color: var(--color-text-muted);
+  }
+}
+
+// A slightly tilted certificate showcase — framed like a real document, not a flat image.
+.ipg-certificate {
+  display: flex;
+  justify-content: center;
+}
+
+.ipg-certificate__img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 16px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
+  rotate: -2deg;
+}

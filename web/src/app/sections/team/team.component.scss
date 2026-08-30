@@ -1,0 +1,96 @@
+.team__header {
+  max-width: 620px;
+  margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+  text-align: center;
+
+  h2 {
+    margin-top: 1rem;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+  }
+
+  p {
+    margin-top: 1rem;
+    font-size: 1.02rem;
+    color: var(--color-text-muted);
+  }
+}
+
+.team__eyebrow {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: color-mix(in srgb, var(--accent) 75%, #fff);
+}
+
+// Leadership sits in the first row, the founding team in the second.
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+
+  @media (max-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+.team__card {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-bg-elevated-2);
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.45);
+  }
+}
+
+.team__photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--color-bg-elevated-2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+}
+
+.team__avatar-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in srgb, var(--color-text-muted) 55%, transparent);
+}
+
+.team__avatar {
+  width: 40%;
+  height: auto;
+}
+
+.team__overlay {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) 1rem 1rem;
+  background: linear-gradient(to top, rgba(8, 8, 14, 0.94) 8%, rgba(8, 8, 14, 0.65) 48%, transparent 100%);
+  text-align: center;
+}
+
+.team__name {
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  color: #fff;
+}
+
+.team__role {
+  margin-top: 0.35rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.78);
+}

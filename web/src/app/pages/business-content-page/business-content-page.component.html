@@ -1,0 +1,82 @@
+<section class="section ipg-hero" style="--accent: var(--color-amaranth)">
+  <div class="container ipg-hero__inner">
+    <span class="badge-chip ipg-eyebrow" uReveal>المحتوى</span>
+    <h1 [uReveal]="0.05">وصّل محتواك للطلاب المستهدفين بدقة</h1>
+    <p [uReveal]="0.1">
+      تمنحك يونيتوك الأعمال وصولًا إلى جمهور طلابي محدد، لتنشر أخبارك وفعالياتك
+      ومبادراتك وفرصك ومحتواك أمام الفئة المناسبة.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-amaranth)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>🎯</span>
+      <h2 [uReveal]="0.05">لكل محتوى جمهوره المناسب</h2>
+      <p [uReveal]="0.08">حدّد جمهورك وفق معايير دقيقة، مثل:</p>
+
+      <div class="ipg-chips" uRevealGroup>
+        @for (item of targeting; track item) {
+          <span class="ipg-chip">{{ item }}</span>
+        }
+      </div>
+
+      <p [uReveal]="0.2">لضمان وصول المحتوى إلى الفئة الأقرب له.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>📢</span>
+      <h2 [uReveal]="0.05">انشر بالطريقة التي تناسب أهدافك</h2>
+      <p [uReveal]="0.08">يمكنك مشاركة:</p>
+
+      <div class="ipg-chips" uRevealGroup>
+        @for (item of contentTypes; track item) {
+          <span class="ipg-chip">{{ item }}</span>
+        }
+      </div>
+
+      <p [uReveal]="0.2">وغيرها من المحتوى الموجّه لطلاب الجامعات.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-teal)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>📍</span>
+      <h2 [uReveal]="0.05">كن حاضرًا في الساحة</h2>
+      <p [uReveal]="0.08">يظهر محتواك داخل البيئة التي يتصفحها الطلاب يوميًا، دون انتظار وصولهم إليه بأنفسهم.</p>
+    </div>
+
+    <div class="container" style="margin-top: clamp(2.5rem, 6vw, 4rem)">
+      <h2 class="ipg-title" uReveal>ماذا تعرف بعد النشر؟</h2>
+      <p class="ipg-subtitle" [uReveal]="0.06">تابع أداء محتواك، واطّلع على:</p>
+
+      <div class="ipg-grid" style="margin-top: clamp(2rem, 5vw, 3rem)" uRevealGroup>
+        @for (metric of metrics; track metric.title) {
+          <article class="ipg-card card">
+            <span class="ipg-card__icon">{{ metric.icon }}</span>
+            <h3>{{ metric.title }}</h3>
+            <p>{{ metric.description }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-amaranth)">
+  <div class="container ipg-cta">
+    <h2 uReveal>
+      انتشار أوسع.<br />
+      وصول أدق.<br />
+      أثر واضح.
+    </h2>
+    <a routerLink="/" fragment="business" class="btn btn--primary" [uReveal]="0.1">ابدأ مع يونيتوك الأعمال</a>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+# Netlify configuration for the UniTok website.
+#
+# The landing page is the Angular app in web/. The legacy static pages
+# (privacy policy, CSAE, account deletion) are copied into the published
+# directory so they keep working at their existing URLs.
+#
+# The account deletion API stays on Render and is deployed from src/ at the
+# repo root — it is not part of this build.
+
+[build]
+  command = """
+    cd web && npm ci && npm run build && cd .. && \
+    cp pp.html csae.html web/dist/unitok-landing/browser/ && \
+    cp -R request-deletion web/dist/unitok-landing/browser/
+  """
+  publish = "web/dist/unitok-landing/browser"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Angular client-side routing. Netlify serves real files (pp.html, csae.html,
+# request-deletion/) before applying this fallback, so they are not swallowed.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
