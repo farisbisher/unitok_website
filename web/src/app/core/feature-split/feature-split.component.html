@@ -1,0 +1,50 @@
+<article
+  class="feature-stack__card"
+  [class.feature-stack__card--last]="isLast"
+  uReveal
+  uStackDepth
+>
+  <div
+    class="feature-split card"
+    [class.feature-split--reverse]="reverse"
+    [style.--accent]="'var(--color-' + accent + ')'"
+  >
+    <div class="feature-split__text">
+      @if (eyebrow) {
+        <span class="badge-chip">{{ eyebrow }}</span>
+      }
+      <h3>{{ title }}</h3>
+      <p>{{ description }}</p>
+
+      @if (ctaLabel) {
+        <a [routerLink]="ctaLink" class="feature-split__link">{{ ctaLabel }} ←</a>
+      }
+    </div>
+
+    <div class="feature-split__visual">
+      <div class="feature-split__blob"></div>
+      <div class="feature-split__frame" [class.feature-split__frame--phone]="images.length">
+        @if (videoSrc) {
+          <video class="feature-split__video" [src]="videoSrc" [muted]="true" autoplay loop playsinline></video>
+        } @else if (images.length) {
+          <div class="feature-split__phone">
+            @for (image of images; track image; let i = $index) {
+              <img
+                class="feature-split__phone-screen"
+                [class.feature-split__phone-screen--active]="i === activeImageIndex"
+                [src]="image"
+                alt=""
+              />
+            }
+          </div>
+        } @else {
+          <app-media-placeholder [label]="placeholderLabel" />
+        }
+      </div>
+
+      @for (chip of chips; track chip.label) {
+        <span class="feature-split__floating badge-chip badge-chip--glass">{{ chip.icon }} {{ chip.label }}</span>
+      }
+    </div>
+  </div>
+</article>

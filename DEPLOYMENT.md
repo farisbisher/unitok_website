@@ -1,8 +1,13 @@
 # Deployment Guide
 
 This guide explains how to deploy the UniTok website with:
-- **Frontend** (static files) on Netlify
-- **Backend** (Node.js API) on Render
+- **Frontend** (Angular app in `web/`) on Netlify
+- **Backend** (Node.js API in `src/`) on Render
+
+> **Netlify settings live in `netlify.toml`.** The build command, publish
+> directory and SPA redirect are all defined there and override whatever is set
+> in the Netlify dashboard. You should not need to change dashboard build
+> settings by hand.
 
 ---
 
@@ -123,9 +128,12 @@ git push origin main
 1. Go to [netlify.com](https://netlify.com)
 2. Click **"Add new site"** → **"Import an existing project"**
 3. Connect your GitHub repository
-4. Configure build settings:
-   - **Build command:** Leave empty (static site)
-   - **Publish directory:** `.` or root
+4. Build settings are read from `netlify.toml` — leave the dashboard fields
+   empty. For reference, it sets:
+   - **Build command:** builds the Angular app in `web/`, then copies
+     `pp.html`, `csae.html` and `request-deletion/` into the output
+   - **Publish directory:** `web/dist/unitok-landing/browser`
+   - **Node version:** 20
 5. Click **"Deploy site"**
 
 ### Step 3: Configure Custom Domain (Optional)
@@ -154,10 +162,29 @@ After deploying frontend, update Render environment:
 ## Part 5: Testing
 
 ### Test Locally
+
+Landing page (Angular):
 ```bash
+cd web
+npm install
+npm start
+# Visit http://localhost:4200
+```
+
+API + legacy pages:
+```bash
+npm install
 npm start
 # Visit http://localhost:3000/request-deletion
 # Submit a deletion request
+```
+
+Full production build, exactly as Netlify runs it:
+```bash
+cd web && npm ci && npm run build && cd .. && \
+  cp pp.html csae.html web/dist/unitok-landing/browser/ && \
+  cp -R request-deletion web/dist/unitok-landing/browser/
+npx serve web/dist/unitok-landing/browser
 ```
 
 ### Test Production
@@ -237,8 +264,12 @@ User's Email Inbox
 ```
 
 **Frontend (Netlify):**
-- Serves: `index.html`, `pp.html`, `request-deletion/index.html`
-- Static files only
+- Builds the Angular app in `web/` and serves it as static files
+- Also serves the legacy pages `pp.html`, `csae.html` and
+  `request-deletion/index.html`, which are copied into the publish directory
+- A catch-all `/* -> /index.html 200` redirect powers Angular's client-side
+  routes (`/programs`, `/ambassadors`, `/business/*`). Real files are matched
+  first, so the legacy pages are unaffected.
 - Makes API calls to backend
 
 **Backend (Render):**

@@ -1,0 +1,22 @@
+.features__intro {
+  max-width: 620px;
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+
+  h2 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    color: var(--color-amaranth);
+  }
+
+  p {
+    margin-top: 1.25rem;
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+  }
+}
+
+.features__stack {
+  display: flex;
+  flex-direction: column;
+}

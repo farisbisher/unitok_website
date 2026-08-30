@@ -387,10 +387,11 @@ app.get('/pp.html', (req, res) => {
 
 /**
  * GET / (root)
- * Serve the landing page
+ * The landing page is now the Angular app deployed separately on Netlify,
+ * so redirect to it instead of serving a local index.html.
  */
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
+    res.redirect(process.env.FRONTEND_URL || '/request-deletion');
 });
 
 // ============================================================================

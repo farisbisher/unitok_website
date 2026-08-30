@@ -1,0 +1,146 @@
+<section class="section ipg-hero" style="--accent: var(--color-carrot)">
+  <div class="container ipg-hero__inner">
+    <span class="badge-chip ipg-eyebrow" uReveal>البرامج</span>
+    <h1 [uReveal]="0.05">برامج تعليمية، بطريقة تفاعلية</h1>
+    <p [uReveal]="0.1">
+      البرامج في يونيتوك تحول التعلم والتطوير إلى تجربة تفاعلية يعيشها الطالب خطوة
+      بخطوة.
+    </p>
+    <p [uReveal]="0.14">
+      برنامج تدريبي، معسكر، مسابقة، أو مبادرة تطويرية؛ يتحول إلى مستويات ومهام ونقاط
+      وصملة، بحيث يكون للطالب مسار واضح يتقدم فيه، وإنجازات تعكس ما حققه خلال التجربة.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="ipg-panel">
+    <div class="container">
+      <div class="ipg-split">
+        <div class="ipg-split__text">
+          <span class="badge-chip ipg-eyebrow" uReveal>للطالب</span>
+          <h2 [uReveal]="0.05">تعلّم من التجربة، وتقدّم بإنجازاتك</h2>
+          <p [uReveal]="0.1">يستكشف الطالب مراحل البرنامج ويخوض مجموعة من المهام والتجارب المصممة لتطوير مهاراته.</p>
+          <p [uReveal]="0.16">كل إنجاز يحققّه يقرّبه من المستوى التالي، ومع كل مستوى تتوسع تجربته وتزداد الفرص المتاحة له.</p>
+        </div>
+
+        <div class="ipg-split__visual" [uReveal]="0.1">
+          <img class="ipg-split__phone-composite" src="assets/images/cards/programs-path-framed.png" alt="مسار برنامج داخل يونيتوك" />
+        </div>
+      </div>
+
+      <div class="ipg-grid" style="margin-top: clamp(2.5rem, 6vw, 4rem)" uRevealGroup>
+        @for (item of studentConcepts; track item.title) {
+          <article class="ipg-card card">
+            <span class="ipg-card__icon">{{ item.icon }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-dusk)">
+  <div class="ipg-panel">
+    <div class="container">
+      <div class="ipg-split ipg-split--reverse">
+        <div class="ipg-split__text">
+          <span class="badge-chip ipg-eyebrow" uReveal>للجهات</span>
+          <h2 [uReveal]="0.05">حوّل برنامجك إلى تجربة يعيشها الطالب</h2>
+          <p [uReveal]="0.1">
+            من خلال يونيتوك الأعمال، تستطيع الجهات إنشاء برامجها وإيصالها إلى الطلاب
+            داخل المنصة.
+          </p>
+          <p [uReveal]="0.16">
+            يمكن للجامعة، الشركة، الجهة الحكومية أو الجهة التعليمية تصميم برنامج يناسب
+            هدفها، وتحديد مراحله ومهامه وآلية التقدم فيه، ثم الوصول إلى الطلاب
+            المستهدفين.
+          </p>
+        </div>
+
+        <div class="ipg-split__visual" [uReveal]="0.1">
+          <app-web-mockup>
+            <img class="ipg-split__web-img" src="assets/images/cards/business-dashboard.jpg" alt="لوحة تحكم إدارة البرامج في يونيتوك الأعمال" />
+          </app-web-mockup>
+        </div>
+      </div>
+
+      <div class="ipg-flow" style="margin-top: clamp(2.5rem, 6vw, 4rem)" uRevealGroup>
+        @for (step of orgSteps; track step.index) {
+          <div class="ipg-flow__step card">
+            <span class="ipg-flow__index">{{ step.index }}</span>
+            <div>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="container">
+    <h2 class="ipg-title" uReveal>أنواع البرامج</h2>
+    <p class="ipg-subtitle" [uReveal]="0.06">يمكن استخدام برامج يونيتوك في تجارب مختلفة، مثل:</p>
+
+    <div class="ipg-grid" style="margin-top: clamp(2rem, 5vw, 3rem)" uRevealGroup>
+      @for (type of programTypes; track type.title) {
+        <article class="ipg-card card">
+          <span class="ipg-card__icon">{{ type.icon }}</span>
+          <h3>{{ type.title }}</h3>
+          <p>{{ type.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-amaranth)">
+  <div class="ipg-panel">
+    <div class="container ipg-split">
+      <div class="ipg-split__text">
+        <h2 uReveal>تجربة واحدة، وفائدة للطرفين</h2>
+        <p [uReveal]="0.08">
+          الجهة تحصل على طريقة جديدة لتقديم برامجها والوصول إلى الطلاب وقياس تفاعلهم.
+        </p>
+        <p [uReveal]="0.14">
+          والطالب يحصل على تجربة تعليمية وتطويرية أكثر تفاعلًا، يشارك فيها ويحقق
+          إنجازات تضاف إلى رحلته الجامعية.
+        </p>
+        <p class="ipg-closing__lines" style="text-align: start" [uReveal]="0.2">
+          الجهة تصنع البرنامج.<br />
+          ويونيتوك يوصله.<br />
+          والطالب يعيش التجربة.
+        </p>
+      </div>
+
+      <div class="ipg-certificate" [uReveal]="0.1">
+        <img class="ipg-certificate__img" src="assets/images/cards/certificate.jpg" alt="شهادة إتمام برنامج من يونيتوك" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="container">
+    <h2 class="ipg-title" uReveal>جاهز تكون جزءًا من التجربة؟</h2>
+
+    <div class="ipg-cta-split" style="margin-top: clamp(2rem, 5vw, 3rem)" uRevealGroup>
+      <div class="ipg-cta-card card">
+        <span>للطلاب</span>
+        <p>اكتشف البرامج المتاحة وابدأ رحلتك.</p>
+        <a routerLink="/" fragment="download" class="btn btn--primary">حمّل تطبيق يونيتوك</a>
+      </div>
+
+      <div class="ipg-cta-card card">
+        <span>للجهات</span>
+        <p>أنشئ برنامجك ووصل إلى الطلاب من خلال يونيتوك الأعمال.</p>
+        <a routerLink="/" fragment="business" class="btn btn--primary-dusk">ابدأ مع يونيتوك الأعمال</a>
+      </div>
+    </div>
+  </div>
+</section>

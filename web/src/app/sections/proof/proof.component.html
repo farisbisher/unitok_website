@@ -1,0 +1,34 @@
+<section id="proof" class="proof section">
+  <div class="proof__frame">
+    <div class="container">
+      <div class="proof__header">
+        <h2 uReveal>بدأنا من جامعة، واليوم إحنا مجتمع أكبر</h2>
+        <p [uReveal]="0.08">يونيتوك بدأ من مجتمع جامعي، واليوم يجمع طلاب وتجارب من جامعات مختلفة.</p>
+      </div>
+
+      <div class="proof__stats" uRevealGroup>
+        @for (stat of stats; track stat.label) {
+          <div class="proof__stat">
+            <span class="proof__value" [uCountUp]="stat.target" uCountUpPrefix="+">0</span>
+            <span class="proof__label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="proof__marquee" [uReveal]="0.25">
+    <div class="proof__marquee-track">
+      @for (uni of universities; track uni.name + '-a') {
+        <span class="proof__logo-badge">
+          <img [src]="uni.src" [alt]="uni.name" />
+        </span>
+      }
+      @for (uni of universities; track uni.name + '-b') {
+        <span class="proof__logo-badge" aria-hidden="true">
+          <img [src]="uni.src" alt="" />
+        </span>
+      }
+    </div>
+  </div>
+</section>

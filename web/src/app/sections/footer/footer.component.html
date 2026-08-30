@@ -1,0 +1,39 @@
+<footer id="footer" class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img src="assets/images/brand/logo-icon.svg" alt="يونيتوك" width="40" height="40" />
+      <p>تجربة جامعية مختلفة.</p>
+    </div>
+
+    <div class="footer__columns">
+      @for (column of columns; track column.title) {
+        <div class="footer__column">
+          <h4>{{ column.title }}</h4>
+          <ul>
+            @for (link of column.links; track link.label) {
+              <li>
+                @if (link.href) {
+                  <a [href]="link.href">{{ link.label }}</a>
+                } @else {
+                  <a [routerLink]="link.path" [fragment]="link.fragment">{{ link.label }}</a>
+                }
+              </li>
+            }
+          </ul>
+        </div>
+      }
+
+      <div class="footer__column">
+        <h4>حمّل التطبيق</h4>
+        <ul>
+          <li><a href="https://apps.apple.com/sa/app/unitok-app/id6745688652" target="_blank" rel="noopener">App Store</a></li>
+          <li><a href="https://drive.google.com/file/d/1aS0nLPhoBSWqBFmRRJyd7BbpvcnUe723/view?usp=sharing" target="_blank" rel="noopener">Google Play</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <span>جميع الحقوق محفوظة <bdi>© {{ year }} يونيتوك</bdi></span>
+  </div>
+</footer>

@@ -1,0 +1,71 @@
+<section class="section ipg-hero" style="--accent: var(--color-teal)">
+  <div class="container ipg-hero__inner">
+    <span class="badge-chip ipg-eyebrow" uReveal>الحملات الإعلانية</span>
+    <h1 [uReveal]="0.05">وصّل إعلانك لفئتك المستهدفة بدقة</h1>
+    <p [uReveal]="0.1">
+      ليس كل طالب هو جمهورك المستهدف. تتيح لك يونيتوك الأعمال بناء حملات إعلانية موجهة
+      لطلاب الجامعات وفق معايير دقيقة، لإيصال رسالتك إلى الفئة التي تهمك.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-teal)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>🎯</span>
+      <h2 [uReveal]="0.05">حدّد جمهورك</h2>
+      <p [uReveal]="0.08">اختر الفئة التي ترغب بالوصول إليها وفق:</p>
+
+      <div class="ipg-chips" uRevealGroup>
+        @for (item of targeting; track item) {
+          <span class="ipg-chip">{{ item }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>🎨</span>
+      <h2 [uReveal]="0.05">صمّم حملتك</h2>
+      <p [uReveal]="0.08">حدّد هدفك، جهّز محتواك، واختر الجمهور المستهدف.</p>
+      <p [uReveal]="0.14">من الإعلان عن فعالية، إلى حملة توظيف أو مبادرة أو منتج يهم الطلاب.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-amaranth)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>📍</span>
+      <h2 [uReveal]="0.05">إعلانك في المكان المناسب</h2>
+      <p [uReveal]="0.08">
+        استفد من الساحة وطريقة تصفح الطلاب للمحتوى، لإيصال رسالتك ضمن تجربتهم اليومية
+        داخل يونيتوك.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-dusk)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>📊</span>
+      <h2 [uReveal]="0.05">تابع النتائج</h2>
+      <p [uReveal]="0.08">تابع أداء حملتك من الوصول والتفاعل إلى النتائج، واحصل على صورة أوضح عن جمهورك.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-teal)">
+  <div class="container ipg-cta">
+    <h2 uReveal>
+      استهداف أدق.<br />
+      وصول أفضل.<br />
+      نتيجة أوضح.
+    </h2>
+    <a routerLink="/" fragment="business" class="btn btn--primary" [uReveal]="0.1">ابدأ حملتك</a>
+  </div>
+</section>

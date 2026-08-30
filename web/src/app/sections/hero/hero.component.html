@@ -1,0 +1,38 @@
+<section id="hero" class="hero" #hero>
+  <div class="hero__frame" aria-hidden="true">
+    <img class="hero__ribbon hero__ribbon--primary" src="assets/images/brand/ribbon-pink-large.svg" alt="" />
+  </div>
+
+  <div class="container hero__content">
+    <div class="hero__copy">
+      <h1 uReveal [uRevealY]="0">هدفنا نخليك تعيش<br />تجربة جامعية مختلفة</h1>
+
+      <p class="hero__lead" [uReveal]="0.08" [uRevealY]="0">
+        يونيتوك أول منصة تواصل اجتماعي خاصة بطلاب الجامعات، تجمع مجتمعك الجامعي في
+        مكان واحد؛ من التواصل والمحتوى والتفاعل، إلى البرامج والفرص اللي تناسب
+        اهتماماتك وتخصصك.
+      </p>
+
+      <div class="hero__actions" [uReveal]="0.16" [uRevealY]="0">
+        <a routerLink="/" fragment="download" class="btn btn--primary">حمّل يونيتوك</a>
+        <a routerLink="/" fragment="business" class="btn btn--glass">يونيتوك الأعمال</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" [uReveal]="0.2" [uRevealY]="0">
+      <img #parallax class="hero__phone" src="assets/images/brand/hero-phone-screenshot.png" alt="لقطة من تطبيق يونيتوك" />
+
+      <div #parallax class="hero__badge">
+        <img src="assets/images/brand/logo-icon.svg" alt="" aria-hidden="true" />
+      </div>
+
+      <div #parallax class="hero__burst">
+        <img src="assets/images/brand/burst-white.svg" alt="" aria-hidden="true" />
+      </div>
+
+      <div #parallax class="hero__chrome">
+        <img src="assets/images/brand/chrome-swirl.png" alt="" aria-hidden="true" />
+      </div>
+    </div>
+  </div>
+</section>

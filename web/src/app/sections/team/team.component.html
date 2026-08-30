@@ -1,0 +1,42 @@
+<section id="team" class="section team" style="--accent: var(--color-dusk)">
+  <div class="container">
+    <div class="team__header">
+      <span class="badge-chip team__eyebrow" uReveal>الفريق</span>
+      <h2 [uReveal]="0.05">فريق يونيتوك</h2>
+      <p [uReveal]="0.1">
+        فريق يجمع خبرات ومهارات متنوعة، نوظّف اختلافها لصناعة تجربة جامعية أكثر تفاعلًا
+        وتميّزًا، برؤية واحدة وشغف مشترك.
+      </p>
+    </div>
+
+    <div class="team__grid" uRevealGroup>
+      @for (member of members; track member.name) {
+        <div class="team__card">
+          <div class="team__photo">
+            @if (member.photo) {
+              <img [src]="member.photo" [alt]="member.name" />
+            } @else {
+              <div class="team__avatar-wrap">
+                <svg class="team__avatar" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <circle cx="60" cy="42" r="22" stroke="currentColor" stroke-width="4" />
+                  <path
+                    d="M22 100c0-18 8-30 16-34 4 8 12 13 22 13s18-5 22-13c8 4 16 16 16 34"
+                    stroke="currentColor"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            }
+
+            <div class="team__overlay">
+              <div class="team__name">{{ member.name }}</div>
+              <div class="team__role">{{ member.role }}</div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

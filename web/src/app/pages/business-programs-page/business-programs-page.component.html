@@ -1,0 +1,78 @@
+<section class="section ipg-hero" style="--accent: var(--color-carrot)">
+  <div class="container ipg-hero__inner">
+    <span class="badge-chip ipg-eyebrow" uReveal>البرامج</span>
+    <h1 [uReveal]="0.05">حوّل مبادرتك إلى تجربة يعيشها الطالب</h1>
+    <p [uReveal]="0.1">
+      لديك برنامج أو مبادرة أو مسابقة ترغب في إيصالها للطلاب؟ تتيح لك يونيتوك الأعمال
+      بناء برنامج تفاعلي يشارك فيه الطالب، وينجز، ويتقدم.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>💡</span>
+      <h2 [uReveal]="0.05">ابدأ بفكرتك</h2>
+      <p [uReveal]="0.08">حدّد هدف البرنامج، الفئة المستهدفة، والمحتوى أو المهارات التي ترغب في إيصالها للطلاب.</p>
+    </div>
+
+    <div class="container ipg-split" style="margin-top: clamp(2.5rem, 6vw, 4rem)">
+      <div class="ipg-split__text">
+        <h2 uReveal>صمّم التجربة</h2>
+        <p [uReveal]="0.06">قسّم برنامجك إلى:</p>
+
+        <div class="ipg-chips" style="justify-content: flex-start" uRevealGroup>
+          @for (item of building; track item) {
+            <span class="ipg-chip">{{ item }}</span>
+          }
+        </div>
+
+        <p [uReveal]="0.2">ليعرف الطالب أين بدأ وإلى أين وصل.</p>
+      </div>
+
+      <div class="ipg-split__visual" [uReveal]="0.1">
+        <app-web-mockup>
+          <img class="ipg-split__web-img" src="assets/images/cards/business-dashboard.jpg" alt="لوحة تحكم إدارة البرامج في يونيتوك الأعمال" />
+        </app-web-mockup>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-dusk)">
+  <div class="ipg-panel">
+    <div class="container ipg-block">
+      <span class="ipg-block__icon" uReveal>🎯</span>
+      <h2 [uReveal]="0.05">وصّل البرنامج للطلاب المناسبين</h2>
+      <p [uReveal]="0.08">حدّد الجامعات والتخصصات والفئات المستهدفة، لإيصال برنامجك للجمهور المناسب.</p>
+    </div>
+
+    <div class="container ipg-block" style="margin-top: clamp(2.5rem, 6vw, 4rem)">
+      <span class="ipg-block__icon" uReveal>🤝</span>
+      <h2 uReveal>ابق قريبًا من المشاركين</h2>
+      <p [uReveal]="0.08">تابع تقدم الطلاب وتفاعلهم داخل البرنامج، واطّلع على مسارهم في المراحل المختلفة.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-amaranth)">
+  <div class="ipg-panel">
+    <div class="container ipg-closing">
+      <h2 uReveal>من مبادرة إلى تجربة</h2>
+      <p [uReveal]="0.08">بدلًا من أن يطّلع الطالب على برنامجك ويمضي، يخوضه خطوة بخطوة.</p>
+      <p class="ipg-closing__lines" [uReveal]="0.14">
+        يشارك.<br />
+        ينجز.<br />
+        يتقدم.
+      </p>
+      <p [uReveal]="0.2">ويظهر لك الأثر بوضوح.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="--accent: var(--color-carrot)">
+  <div class="container ipg-cta">
+    <a routerLink="/" fragment="business" class="btn btn--primary" uReveal>ابدأ برنامجك</a>
+  </div>
+</section>

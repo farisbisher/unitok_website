@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.web-mockup {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+  background: #16161d;
+}
+
+.web-mockup__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.9rem;
+  background: #1e1e27;
+}
+
+.web-mockup__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+
+  &:first-child {
+    background: #ef5350;
+  }
+
+  &:nth-child(2) {
+    background: #f5b942;
+  }
+
+  &:nth-child(3) {
+    background: #4caf50;
+  }
+}
+
+.web-mockup__url {
+  margin-inline-start: 0.75rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  direction: ltr;
+}
+
+.web-mockup__screen {
+  aspect-ratio: 16 / 10;
+
+  app-media-placeholder {
+    display: block;
+    height: 100%;
+  }
+}

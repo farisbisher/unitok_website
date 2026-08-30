@@ -1,22 +1,29 @@
 # UniTok Web
 
-A comprehensive Node.js web application combining:
-- Landing page and static content serving
-- Account deletion request system with email verification
-- Privacy policy documentation
+The UniTok website, made up of two independently deployed parts:
 
-Built with Express.js, Nodemailer, and modern web standards.
+- **Landing page** — an Angular 18 single-page app in `web/`, built and served
+  as static files by **Netlify**.
+- **Account deletion API** — an Express server in `src/`, deployed to
+  **Render**. It handles deletion requests and email verification.
+
+The legacy static pages (`pp.html`, `csae.html`, `request-deletion/`) live at
+the repo root and are copied into the Netlify publish directory at build time,
+so they keep working at their existing URLs.
+
+Netlify's build and publish settings come from `netlify.toml` in this repo,
+which overrides anything configured in the Netlify dashboard.
 
 ---
 
 ## Features
 
-### Landing Page
-- Modern, responsive design optimized for mobile and desktop
-- University and club partnership showcase
-- Team member profiles with social links
+### Landing Page (Angular, `web/`)
+- Arabic-first, responsive design optimized for mobile and desktop
+- Routed pages for programs, ambassadors, and UniTok Business
+- University partnership showcase and team profiles
 - Download links for Android and iOS apps
-- Video promotional content
+- GSAP-driven scroll animations
 
 ### Account Deletion System
 - User-friendly deletion request form
@@ -120,28 +127,26 @@ TOKEN_EXPIRY_HOURS=24
 
 ```
 unitok_website/
-├── src/
+├── web/                      # Angular landing page (deployed to Netlify)
+│   ├── src/app/              # Components, sections, routed pages
+│   ├── public/assets/        # Fonts, images, video used by the app
+│   ├── angular.json
+│   └── package.json
+├── src/                      # Express API (deployed to Render)
 │   ├── index.js              # Main Express server
 │   └── config/
 │       └── email.js          # Email transporter configuration
-├── public/
-│   ├── index.html            # Landing page
-│   ├── pp.html               # Privacy policy
-│   └── request-deletion/
-│       ├── index.html        # Deletion request form
-│       └── confirmed.html    # Confirmation success page
-├── assets/
-│   ├── logo.png              # UniTok logo
-│   ├── Unitok.MP4            # Promotional video
-│   ├── Universities/         # University partner logos
-│   ├── clubs/                # Club logos
-│   ├── team/                 # Team member photos
-│   └── Advertisers/          # Advertiser logos
+├── pp.html                   # Privacy policy (legacy static page)
+├── csae.html                 # CSAE policy (legacy static page)
+├── request-deletion/
+│   ├── index.html            # Deletion request form
+│   └── confirmed.html        # Confirmation success page
+├── assets/                   # Legacy media, still served at /assets by the API
 ├── data/                     # Deletion request storage (gitignored)
+├── netlify.toml              # Netlify build + publish + SPA redirect config
 ├── .env                      # Environment variables (gitignored)
 ├── .env.example              # Environment template
-├── .gitignore                # Git ignore rules
-├── package.json              # Dependencies and scripts
+├── package.json              # API dependencies and scripts
 └── README.md                 # This file
 ```
 
@@ -149,11 +154,14 @@ unitok_website/
 
 ## Available Routes
 
+These are the routes served by the Express API on Render. The public website
+itself is served by Netlify.
+
 ### Public Pages
-- `GET /` - Landing page
+- `GET /` - Redirects to `FRONTEND_URL` (the Netlify site)
 - `GET /pp.html` - Privacy policy
 - `GET /request-deletion` - Account deletion form
-- `GET /assets/*` - Static assets (images, videos, etc.)
+- `GET /assets/*` - Legacy static assets (images, videos, etc.)
 
 ### API Endpoints
 - `POST /request-deletion` - Submit deletion request
@@ -184,10 +192,10 @@ npm test
 
 ### Adding New Features
 
-1. **New Routes:** Add routes in `src/index.js` following the existing pattern
-2. **New Pages:** Add HTML files to `public/` directory
+1. **Landing page changes:** work in `web/` (`cd web && npm install && npm start`)
+2. **New API Routes:** Add routes in `src/index.js` following the existing pattern
 3. **Email Templates:** Modify email HTML in route handlers
-4. **Static Assets:** Place in `assets/` directory
+4. **Landing page assets:** Place in `web/public/assets/`
 
 ### Code Quality Standards
 
@@ -398,6 +406,14 @@ ISC License - Copyright (c) 2025 UniTok Team
 ---
 
 ## Changelog
+
+### Version 3.0.0
+- ✨ Replaced the static landing page with the Angular 18 app in `web/`
+- 📦 Added `netlify.toml` so Netlify builds the Angular app and keeps the
+  legacy pages reachable
+- 🔀 `GET /` on the API now redirects to `FRONTEND_URL` instead of serving a
+  local `index.html`
+- 🗑️ Removed the superseded root `index.html` and an empty `server.js`
 
 ### Version 2.0.0 (2025-11-30)
 - ✨ Added account deletion request system

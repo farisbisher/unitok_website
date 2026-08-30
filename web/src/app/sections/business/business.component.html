@@ -1,0 +1,57 @@
+<section id="business" class="business section">
+  <div class="business__frame">
+    <img class="business__watermark" src="assets/images/brand/chrome-swirl.png" alt="" aria-hidden="true" />
+
+    <div class="container">
+      <div class="business__top">
+        <div class="business__header">
+          <span class="badge-chip business__eyebrow" uReveal>يونيتوك الأعمال</span>
+          <h2 [uReveal]="0.05">نساعدك توصل لفئة الطلاب الجامعيين بأسهل طريقة</h2>
+          <p [uReveal]="0.1">
+            يونيتوك الأعمال يتيح للجامعات، الشركات، الجهات الحكومية، الأندية والجهات المهتمة
+            بطلاب الجامعات الوصول إلى جمهور جامعي محدد بدقة، ونشر المحتوى والفرص، أو إطلاق
+            حملات وبرامج داخل يونيتوك.
+          </p>
+        </div>
+
+        <div class="business__mockup" [uReveal]="0.14">
+          <app-web-mockup>
+            <img class="business__mockup-img" src="assets/images/cards/business-dashboard.jpg" alt="لوحة تحكم يونيتوك الأعمال" />
+          </app-web-mockup>
+        </div>
+      </div>
+
+      <div class="business__audiences" uRevealGroup>
+        @for (audience of audiences; track audience.label) {
+          <div class="business__audience">
+            <span class="business__audience-icon">{{ audience.icon }}</span>
+            <h4>{{ audience.label }}</h4>
+            <p>{{ audience.description }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="business__grid" uRevealGroup>
+        @for (solution of solutions; track solution.index) {
+          <a [routerLink]="solution.link" class="business__card">
+            <span class="business__index">{{ solution.index }}</span>
+            <h3>{{ solution.title }}</h3>
+            <p>{{ solution.description }}</p>
+
+            <ul class="business__features">
+              @for (feature of solution.features; track feature) {
+                <li>{{ feature }}</li>
+              }
+            </ul>
+
+            <span class="business__link">اعرف أكثر ←</span>
+          </a>
+        }
+      </div>
+
+      <div class="business__cta" uReveal>
+        <a href="https://business.unitokapp.com/#/" target="_blank" rel="noopener" class="btn business__cta-btn">ابدأ مع يونيتوك الأعمال</a>
+      </div>
+    </div>
+  </div>
+</section>
